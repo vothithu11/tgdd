@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { menuBarAdmin } from '@/datas/data';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import logo from '../../assets/images/logo-short.png'
 
 interface INameUser {
     name?: string
@@ -28,7 +29,7 @@ const NavAdmin = () => {
     return (
         <div className="relative z-10 grid grid-cols-2 bg-[#ff6666] h-12 center px-4 rounded-xl">
             <Link href={'/'}>
-                <img src="/image/logo-short.png" alt="logo" className="w-10 h-10 rounded-full" />
+                <img src={logo.src} alt="logo" className="w-10 h-10 rounded-full" />
             </Link>
             <div className="flex items-center space-x-4">
                 <button onClick={() => setMenuBarVisible(!menuBarVisible)}>
