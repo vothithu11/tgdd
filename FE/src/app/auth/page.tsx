@@ -1,7 +1,6 @@
 'use client';
 import Auth from '@/components/auth/Auth';
 import NavAdmin from '@/components/auth/NavAdmin';
-import { url } from '@/datas/data';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
@@ -17,7 +16,7 @@ const AuthPage = () => {
         e.preventDefault();
         const endpoint = isSignup ? 'signup' : 'signin';
         try {
-            const response = await fetch(`${url}/users/${endpoint}`, {
+            const response = await fetch(`${process.env.NEXT_DOMAIN_URL}/users/${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

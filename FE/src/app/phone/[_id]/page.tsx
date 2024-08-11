@@ -1,11 +1,10 @@
 import ProductDetail from '@/components/productDetail/ProductDetail';
-import { url } from '@/datas/data';
 
 const PhoneProduct = async ({ params }) => {
     const { _id } = params || {};
 
     try {
-        const res = await fetch(`${url}/posts/${_id}`, { cache: 'no-store', next: { revalidate: 0 } });
+        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts/${_id}`, { cache: 'no-store', next: { revalidate: 0 } });
         if (!res.ok) {
             return <div>Error: {res.statusText}</div>;
         }

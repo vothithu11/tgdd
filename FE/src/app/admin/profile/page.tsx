@@ -2,10 +2,10 @@
 // import NavAdmin from '@/components/auth/NavAdmin';
 // import BannerSliderComponent from '@/components/BannerSliderComponent';
 // import ProductCard from '@/components/productCard/ProductCard';
-// import { url } from '@/datas/data';
+
 
 // const P = async () => {
-//     const res = await fetch(`${url}/posts`, { cache: 'no-store' });
+//     const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts`, { cache: 'no-store' });
 
 //     const data = await res.json();
 //     const dataPromo = data.docs;
