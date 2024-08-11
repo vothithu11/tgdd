@@ -6,6 +6,12 @@ import {
     faClock,
     faDesktop,
 } from '@fortawesome/free-solid-svg-icons';
+import banner1 from '../assets/images/banner1.png';
+import banner2 from '../assets/images/banner2.png';
+import banner3 from '../assets/images/banner3.png';
+import banner4 from '../assets/images/banner4.png';
+import banner5 from '../assets/images/banner5.png';
+
 export const menuBar = [
     {
         title: 'Điện thoại',
@@ -374,15 +380,16 @@ export const menuBarAdmin = [
         link: '/admin/create',
     },
 ];
+
 export const images = [
-    '/image/banner1.png',
-    '/image/banner2.png',
-    '/image/banner3.png',
-    '/image/banner4.png',
-    '/image/banner5.png',
-    '/image/banner1.png',
-    '/image/banner2.png',
-    '/image/banner3.png',
-    '/image/banner4.png',
-    '/image/banner5.png',
+    banner1,
+    banner2,
+    banner3,
+    banner4,
+    banner5,
+    banner1,
+    banner2,
+    banner3,
+    banner4,
+    banner5,
 ];

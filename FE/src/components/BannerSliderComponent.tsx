@@ -18,14 +18,14 @@ const BannerSliderComponent = ({ dataPromo, numVisible, bgImage, moreInfo }) => 
         setIndex((prevIndex) => wrap(0, dataPromo.length, prevIndex + numVisible));
     };
 
-    const getVisibleProducts = () => {
-        let visibleProducts = [];
-        for (let i = 0; i < numVisible; i++) {
-            const productIndex = wrap(0, dataPromo.length, index + i);
-            visibleProducts.push(dataPromo[productIndex]);
-        }
-        return visibleProducts;
-    };
+    // const getVisibleProducts = () => {
+    //     let visibleProducts = [];
+    //     for (let i = 0; i < numVisible; i++) {
+    //         const productIndex = wrap(0, dataPromo.length, index + i);
+    //         visibleProducts.push(dataPromo[productIndex]);
+    //     }
+    //     return visibleProducts;
+    // };
 
     return (
         <div className="relative flex items-center overflow-hidden">
@@ -44,11 +44,11 @@ const BannerSliderComponent = ({ dataPromo, numVisible, bgImage, moreInfo }) => 
                         exit={{ x: -300, opacity: 0 }}
                         transition={{ type: 'spring', stiffness: 100, damping: 15 }}
                     >
-                        {getVisibleProducts().map((product) => (
+                        {/* {getVisibleProducts().map((product) => (
                             <div key={product._id} className="flex-shrink-0 w-1/5 p-2">
                                 <ProductCard product={product} bgImage={bgImage} moreInfo={moreInfo} />
                             </div>
-                        ))}
+                        ))} */}
                     </motion.div>
                 </AnimatePresence>
             </div>

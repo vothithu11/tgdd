@@ -18,11 +18,13 @@ const NavAdmin = () => {
         localStorage.removeItem('user');
         router.push('/auth');
     };
+
     let nameUserParse: INameUser | null = null;
     if (typeof localStorage !== 'undefined') {
         const nameUser: string | null = localStorage.getItem('user');
         nameUserParse = nameUser ? JSON.parse(nameUser) : null;
     }
+    
     return (
         <div className="relative z-10 grid grid-cols-2 bg-[#ff6666] h-12 center px-4 rounded-xl">
             <Link href={'/'}>

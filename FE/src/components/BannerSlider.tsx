@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const BannerSlider = ({ images, numVisible = 2 }) => {
+    console.log(images)
     const [index, setIndex] = useState(0);
 
     const prevImage = () => {
@@ -25,7 +26,8 @@ const BannerSlider = ({ images, numVisible = 2 }) => {
         }
         return visibleImages;
     };
-
+ 
+    console.log(getVisibleImages())
     return (
         <div className=" relative flex items-center">
             <div
@@ -40,7 +42,7 @@ const BannerSlider = ({ images, numVisible = 2 }) => {
                         <motion.img
                             className="rounded-lg pr-2 last:pr-0"
                             key={image.src}
-                            src={image}
+                            src={image.src}
                             alt=""
                             style={{ width: `${100 / numVisible}%`, height: '100%' }}
                             initial={{ x: 300, opacity: 0 }}
