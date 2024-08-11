@@ -6,15 +6,23 @@ import { menuBarAdmin } from '@/datas/data';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
+interface INameUser {
+    name?: string
+}
+
 const NavAdmin = () => {
     const [menuBarVisible, setMenuBarVisible] = useState(false);
     const router = useRouter();
     const handleLogout = () => {
-        window.localStorage.removeItem('token');
-        window.localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
         router.push('/auth');
     };
-    const nameUser = JSON.parse(localStorage.getItem('user'));
+    let nameUserParse: INameUser | null = null;
+    if (typeof localStorage !== 'undefined') {
+        const nameUser: string | null = localStorage.getItem('user');
+        nameUserParse = nameUser ? JSON.parse(nameUser) : null;
+    }
     return (
         <div className="relative z-10 grid grid-cols-2 bg-[#ff6666] h-12 center px-4 rounded-xl">
             <Link href={'/'}>
@@ -39,9 +47,9 @@ const NavAdmin = () => {
                     </ul>
                 )}
                 <nav>
-                    {nameUser ? (
+                    {nameUserParse ? (
                         <div className="flex justify-end items-center space-x-4">
-                            <p>Welcome, {nameUser.name}</p>
+                            <p>Welcome, {nameUserParse.name}</p>
                             <button onClick={handleLogout} className="cart-btn">
                                 LOG-OUT
                             </button>

@@ -3,8 +3,10 @@ import Auth from '@/components/auth/Auth';
 import NavAdmin from '@/components/auth/NavAdmin';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
+
+
 const AuthPage = () => {
+    const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
     const [formData, setFormData] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
     const handleChange = (e) => {
@@ -25,10 +27,8 @@ const AuthPage = () => {
             });
             const data = await response.json();
             if (data.token) {
-                window.localStorage.setItem('token', data.token);
-                window.localStorage.setItem('user', JSON.stringify(data.result));
-                console.log('Token saved to localStorage:', localStorage.getItem('token'));
-                console.log('User saved to localStorage:', localStorage.getItem('user'));
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.result));
             }
             console.log(data);
             if (response.ok) {

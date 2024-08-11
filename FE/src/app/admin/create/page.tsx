@@ -1,24 +1,28 @@
 'use client';
+
 import NavAdmin from '@/components/auth/NavAdmin';
 import Form from './components/Form';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-const initialState = {
-    brand: '',
-    title: '',
-    ram: '',
-    originalPrice: '',
-    salePrice: '',
-    promotionPercent: '',
-    desc: '',
-    storage: '',
-    battery: '',
-};
 
 const CreateProduct = () => {
+    const initialState = {
+        brand: '',
+        title: '',
+        ram: '',
+        originalPrice: '',
+        salePrice: '',
+        promotionPercent: '',
+        desc: '',
+        storage: '',
+        battery: '',
+    };
     const router = useRouter();
     const [post, setPost] = useState(initialState);
-    const token = window.localStorage.getItem('token');
+    let token: string | null;
+    if (typeof localStorage !== 'undefined') {
+        token = localStorage.getItem('token');
+    }
     const createProduct = async (e) => {
         e.preventDefault();
         try {
