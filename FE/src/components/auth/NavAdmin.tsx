@@ -10,8 +10,8 @@ const NavAdmin = () => {
     const [menuBarVisible, setMenuBarVisible] = useState(false);
     const router = useRouter();
     const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        window.localStorage.removeItem('token');
+        window.localStorage.removeItem('user');
         router.push('/auth');
     };
     const nameUser = JSON.parse(localStorage.getItem('user'));

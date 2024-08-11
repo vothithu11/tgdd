@@ -18,7 +18,7 @@ const initialState = {
 const CreateProduct = () => {
     const router = useRouter();
     const [post, setPost] = useState(initialState);
-    const token = localStorage.getItem('token');
+    const token = window.localStorage.getItem('token');
     const createProduct = async (e) => {
         e.preventDefault();
         try {

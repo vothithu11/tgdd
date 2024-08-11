@@ -25,8 +25,8 @@ const AuthPage = () => {
             });
             const data = await response.json();
             if (data.token) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(data.result));
+                window.localStorage.setItem('token', data.token);
+                window.localStorage.setItem('user', JSON.stringify(data.result));
                 console.log('Token saved to localStorage:', localStorage.getItem('token'));
                 console.log('User saved to localStorage:', localStorage.getItem('user'));
             }
