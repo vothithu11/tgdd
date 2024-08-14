@@ -1,7 +1,7 @@
 'use client';
 
 import NavAdmin from '@/components/auth/NavAdmin';
-import Form from './components/Form';
+import Form from '../../../components/auth/Form';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -26,7 +26,7 @@ const CreateProduct = () => {
     const createProduct = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/posts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -1,11 +1,12 @@
 import Image from 'next/image';
-import Promo from '@/sections/Promo';
+import Promo from '@/components/home-sections/Promo';
 import Button from '../button/Button';
 import BannerSliderComponent from '../BannerSliderComponent';
 
 import Link from 'next/link';
+import ProductCard from '../product-card';
 
-function DealsLayout({ dealsList, image, btn, background, bgImage, moreInfo, numVisible, title, url }) {
+function DealsLayout({ dealsList, image, btn, background, bgImage, moreInfoBtn, numVisible, title, url }) {
     return (
         <div className={`my-14 ${background} w-full rounded-xl max-lg:mt-8`}>
             <Image width={1354} height={500} src={image} alt="hinh-anh-highlights" />
@@ -19,12 +20,17 @@ function DealsLayout({ dealsList, image, btn, background, bgImage, moreInfo, num
                 </div>
                 {btn && <Button />}
             </div> */}
-            <BannerSliderComponent
+            {/* <BannerSliderComponent
                 dataPromo={dealsList}
                 numVisible={numVisible}
                 bgImage={bgImage}
-                moreInfo={moreInfo}
-            />
+                moreInfoBtn={moreInfoBtn}
+            /> */}
+             <div className="grid grid-cols-5 max-lg:grid-cols-2">
+                    {dealsList.map((deal) => (
+                        <ProductCard product={deal} key={deal.id} moreInfoBtn={moreInfoBtn} />
+                    ))}
+                </div>
             {btn && (
                 <div className="flex justify-center">
                     <Link href={url}>

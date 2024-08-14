@@ -4,7 +4,6 @@ import NavAdmin from '@/components/auth/NavAdmin';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-
 const AuthPage = () => {
     const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
     const [formData, setFormData] = useState(initialState);
@@ -18,7 +17,7 @@ const AuthPage = () => {
         e.preventDefault();
         const endpoint = isSignup ? 'signup' : 'signin';
         try {
-            const response = await fetch(`${process.env.NEXT_DOMAIN_URL}/users/${endpoint}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/users/${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,7 +29,6 @@ const AuthPage = () => {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.result));
             }
-            console.log(data);
             if (response.ok) {
                 router.push('/admin');
             }

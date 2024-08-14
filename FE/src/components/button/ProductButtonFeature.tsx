@@ -18,7 +18,7 @@ const ProductButtonFeature = ({ filter, onSelect, handleSubmit, clearFilters, re
     return (
         <div className="grid grid-cols-1 relative">
             <button
-                className="py-2 px-4 border-2 rounded-md text-md cursor-pointer "
+                className="mx-2 py-2 px-4 border-2 rounded-md text-md cursor-pointer "
                 onClick={() => showPopup(filter.queryName)}
             >
                 <div className="flex items-center space-x-2">

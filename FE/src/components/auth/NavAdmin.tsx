@@ -1,11 +1,11 @@
 'use client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-import { menuBarAdmin } from '@/datas/data';
+import { useState, useEffect } from 'react';
+import { menuBarAdmin } from './data-menu.mocks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import logo from '../../assets/images/logo-short.png'
+import logo from './assets/logo-short.png'
 
 interface INameUser {
     name?: string
@@ -25,7 +25,7 @@ const NavAdmin = () => {
         const nameUser: string | null = localStorage.getItem('user');
         nameUserParse = nameUser ? JSON.parse(nameUser) : null;
     }
-    
+   
     return (
         <div className="relative z-10 grid grid-cols-2 bg-[#ff6666] h-12 center px-4 rounded-xl">
             <Link href={'/'}>

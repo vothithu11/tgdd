@@ -1,24 +1,11 @@
-import ProductDetail from '@/components/productDetail/ProductDetail';
+import ProductDetail from '@/components/product-detail';
+import { fetchProductDetail } from '@/api';
 
-const PhoneProduct = async ({ params }) => {
-    const { _id } = params || {};
+const PhoneDetail = async (props) => {
+    const _id = props?.params?._id;
+    const dataProduct = await fetchProductDetail(_id);
 
-    try {
-        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts/${_id}`, { cache: 'no-store', next: { revalidate: 0 } });
-        if (!res.ok) {
-            return <div>Error: {res.statusText}</div>;
-        }
-
-        const dataProduct = await res.json();
-
-        if (!dataProduct) {
-            return <div>Error: Detail data is undefined</div>;
-        }
-
-        return <ProductDetail dataProduct={dataProduct} />;
-    } catch (error) {
-        return <div>Error: {error.message}</div>;
-    }
+    return <ProductDetail dataProduct={dataProduct} />;
 };
 
-export default PhoneProduct;
+export default PhoneDetail;

@@ -28,11 +28,6 @@
     .padding-y {
         @apply py-8;
     }
-    .bg-dynamic {
-        background-image: url('/image/bg-product-card.png');
-        height: 508px;
-        width: 222px;
-    }
     .cart-btn {
         @apply py-1.5 px-2 border-2 border-red-500 rounded-md text-sm max-lg:text-xs cursor-pointer bg-[#f6f7f8] text-red-500 hover:bg-red-500 hover:text-white active:bg-red-700 active:text-white;
     }
@@ -48,10 +43,4 @@
         @apply border-gray-200;
     }
 }
-@media (max-width: 1024px) {
-    .bg-dynamic {
-        background-image: none;
-        height: auto;
-        width: auto;
-    }
-}
+

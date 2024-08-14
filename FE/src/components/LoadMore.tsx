@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import ProductCard from './productCard/ProductCard';
+import ProductCard from './product-card';
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
 import { getData } from '@/app/phone/page';

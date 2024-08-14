@@ -19,7 +19,7 @@ const ButtonBrandName = ({ filter, onSelect, resetFilters }) => {
             }`}
             onClick={handleClickBtn}
         >
-            <img src={filter.image} alt={filter.name} className="rounded-full" />
+            <img src={filter.image.src} alt={filter.name} className="rounded-full" />
         </div>
     );
 };

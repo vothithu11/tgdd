@@ -4,9 +4,9 @@ import { faCartShopping, faSortDown, faBars } from '@fortawesome/free-solid-svg-
 import SearchBar from './SearchBar';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import MenuBar from './MenuBar';
-import { menuBar } from '@/datas/data';
+import { menuBar } from './data.mocks';
 import { useState } from 'react';
+import logo from './assets/logo.png'
 
 function Nav() {
     const count = useSelector((state) => state.counter.value);
@@ -17,7 +17,7 @@ function Nav() {
             <ul className="w-full h-11 p-2.5 text-sm center max-lg:p-1 max-xl:hidden">
                 <li className="">
                     <Link href="/">
-                        <img src="/image/logo.png" alt="logo" className="w-40 h-8" />
+                        <img src={logo.src} alt="logo" className="w-40 h-8" />
                     </Link>
                 </li>
                 <li className="text-xs max-xl:hidden">
@@ -60,7 +60,7 @@ function Nav() {
             <div className="hidden max-xl:grid max-xl:grid-cols-3 relative z-10 items-center justify-items-center">
                 <div className="justify-self-center">
                     <Link href="/">
-                        <img src="/image/logo.png" alt="logo" className="w-40 h-8" />
+                        <img src={logo.src} alt="logo" className="w-40 h-8" />
                     </Link>
                 </div>
 

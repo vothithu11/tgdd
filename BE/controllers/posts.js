@@ -1,6 +1,4 @@
-import mongoose from 'mongoose';
 import PostProduct from '../models/postProduct.js';
-
 
 export const getPosts = async (req, res) => {
     const { brand, ram, type, screen, storage, charger, isPromotion, price, keyword, category, demand, pricerange, page = 1, limit = 60 } = req.query;
@@ -80,7 +78,6 @@ export const getPosts = async (req, res) => {
 
     try {
         const postProducts = await PostProduct.paginate(filter, options);
-        console.log('PostProducts:', postProducts); 
         res.status(200).json(postProducts);
     } catch (error) {
         console.error('Error fetching posts:', error.message); 
@@ -106,7 +103,6 @@ export const getIdPost = async (req, res) => {
 }
 export const createPost = async (req, res) => {
     const body = req.body;
-    console.log('Received data:', body);
     const newPost = new PostProduct(body);
 
     try {
@@ -123,7 +119,6 @@ export const updatePost = async (req, res) => {
     const updateData = req.body;
   
     try {
-      console.log('Update data:', updateData);
       const updatedProduct = await PostProduct.findByIdAndUpdate(id, updateData, { new: true });
   
       if (!updatedProduct) {

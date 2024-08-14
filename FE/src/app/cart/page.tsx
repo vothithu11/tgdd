@@ -1,10 +1,9 @@
 'use client';
 import { useSelector } from 'react-redux';
 import ProductCounter from '@/components/counter/ProductCounter';
-import { FormatPrice } from '@/datas/covertData';
-
-import CartLayout from '@/components/layout/CartLayout';
 import FormCart from '@/components/cart/FormCart';
+import FormatPrice from '@/components/FormatPrice';
+
 
 const CartPage = () => {
     const { value, products } = useSelector((state) => state.counter);
@@ -14,9 +13,12 @@ const CartPage = () => {
     }, 0);
 
     return (
-        <CartLayout>
+        <div className="padding">
             <div className="shadow-xl p-4 mx-20 space-y-8 max-lg:mx-2 lg:mx-10">
-                <h1 className="text-[#288AD6] font-bold text-xl center-x">Giỏ hàng của bạn</h1>
+                <div className="flex justify-between">
+                    <span className="text-blue-custom">{'<'} Mua thêm sản phẩm khác</span>
+                    <span>Giỏ hàng của bạn</span>
+                </div>
                 {products.length > 0 ? (
                     products.map((product) => (
                         <div
@@ -27,7 +29,7 @@ const CartPage = () => {
                             <div className="space-y-2 max-lg:px-2 max-lg:text-base">
                                 <h2>{product.title}</h2>
                                 <p className="">
-                                    {FormatPrice(product.salePrice)} <span>đ</span>
+                                    <FormatPrice price={product.salePrice} /> <span>đ</span>
                                 </p>
                             </div>
                             <ProductCounter product={product} />
@@ -40,12 +42,12 @@ const CartPage = () => {
                 <p className="flex justify-center font-semibold text-xl max-lg:text-base  max-lg:font-bold">
                     Tổng tiền:
                     <span className="text-red-600 font-bold ml-4 max-lg:text:base  max-lg:font-bold">
-                        {FormatPrice(totalCost)}đ
+                        <FormatPrice price={totalCost} />đ
                     </span>
                 </p>
             </div>
             <FormCart />
-        </CartLayout>
+        </div>
     );
 };
 

@@ -4,7 +4,7 @@ interface IImageHightLightsLayoutProps {
     children: React.ReactNode;
     title: string;
     extraClassChildren: string;
-    extraClassContainer: string;
+    extraClassContainer?: string;
 }
 
 const ImageHighLightsLayout: React.FC<IImageHightLightsLayoutProps> = (props) => {

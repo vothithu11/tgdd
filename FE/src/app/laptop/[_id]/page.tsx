@@ -1,11 +1,11 @@
-import ProductDetail from '@/components/productDetail/ProductDetail';
+import ProductDetail from '@/components/product-detail';
+import { fetchProductDetail } from '@/api';
 
-const LaptopProduct = async (props) => {
+const LaptopDetail = async (props) => {
     const _id = props?.params?._id;
-    const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts/${_id}`);
-    const dataProduct = await res.json();
+    const dataProduct = await fetchProductDetail(_id);
 
     return <ProductDetail dataProduct={dataProduct} />;
 };
 
-export default LaptopProduct;
+export default LaptopDetail;
