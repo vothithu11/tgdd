@@ -8,16 +8,24 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
 }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+
 @layer components {
     .max-container {
         max-width: 1440px;
         margin: 0 auto;
     }
+  
 }
 
 @layer utilities {
     .padding {
-        @apply px-40 max-md:px-4;
+        @apply px-40 max-xl:px-4;
     }
     .center {
         @apply flex justify-between items-center;
@@ -42,5 +50,16 @@
     .border-gray-custom {
         @apply border-gray-200;
     }
-}
+    .gridCol .swiper-button-next {
+        @apply bg-white bg-opacity-80 text-gray-500 p-6 py-8 rounded-lg shadow cursor-pointer absolute -right-[10px] z-10; /* Nền trắng mờ, mũi tên đen, làm tròn và có khoảng cách */
+      }
+      .gridCol .swiper-button-prev {
+        @apply bg-white bg-opacity-80 text-gray-500 p-6 py-8 rounded-lg shadow cursor-pointer absolute -left-[10px] z-10; /* Nền trắng mờ, mũi tên đen, làm tròn và có khoảng cách */
+      }
+    .background-gradient{
+        @apply  bg-gradient-to-r from-[#A3AF73] to-[#DA954E];
+    }
+      
+   
+}   
 

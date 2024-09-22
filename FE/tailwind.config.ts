@@ -9,7 +9,12 @@ const config: Config = {
         './src/**/*.{js,ts,jsx,tsx}',
     ],
     theme: {
-        extend: {},
+        extend: {
+            backgroundImage: {
+                'custom-gradient': 'linear-gradient(#29251c, #2c2306)',
+              },
+        },
+      
     },
     plugins: [],
 };

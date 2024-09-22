@@ -1,7 +1,7 @@
 import PostProduct from '../models/postProduct.js';
 
 export const getPosts = async (req, res) => {
-    const { brand, ram, type, screen, storage, charger, isPromotion, price, keyword, category, demand, pricerange, page = 1, limit = 60 } = req.query;
+    const { brand, ram, type, screen, storage, charger, isPromotion, price, keyword, category, demand, pricerange} = req.query;
    
     let filter = {};
     
@@ -70,14 +70,11 @@ export const getPosts = async (req, res) => {
             { demand: { $regex: regex } }
         ];
     }
-    const options = {
-        page: parseInt(page, 10),
-        limit: parseInt(limit, 10),
-    };
+   
 
 
     try {
-        const postProducts = await PostProduct.paginate(filter, options);
+        const postProducts = await PostProduct.find(filter);
         res.status(200).json(postProducts);
     } catch (error) {
         console.error('Error fetching posts:', error.message); 

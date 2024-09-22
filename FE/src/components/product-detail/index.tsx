@@ -39,16 +39,10 @@ const ProductDetail:React.FC<IProductDetailProps> = ({ dataProduct }) => {
     const [bigLapImg, setBigLap] = useState(initialImage);
     const [visible, setVisible] = useState(2);
     const showMoreItems = () => setVisible((pre) => pre + 6);
-    const dispatch = useDispatch();
-    const handleBuyNow = () => {
-        dispatch(increment(detailData));
-    };
-    const handleAddToCart = () => {
-        dispatch(increment(detailData));
-    };
+  
 
     return (
-        <div className='padding'>
+        <div className='padding mb-4'>
             <div className="border-b-2 border-gray-custom py-3 space-y-2 text-blue-custom">
                 <div className="flex gap-4">
                     <h4>{category === 'phone' ? 'Điện thoại' : 'Laptop'} </h4>
@@ -66,7 +60,6 @@ const ProductDetail:React.FC<IProductDetailProps> = ({ dataProduct }) => {
             <div className="grid grid-cols-5 mt-4 ">
                 <BoxLeft bigLapImg={bigLapImg} detailData={detailData} setBigLap={setBigLap} />
                 <BoxRight
-                    handleBuyNow={handleBuyNow}
                     detailData={detailData}
                     visible={visible}
                     showMoreItems={showMoreItems}

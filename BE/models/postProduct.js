@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import mongoosePaginate from 'mongoose-paginate-v2';
 
 const postSchema = mongoose.Schema({
     ram: Number,
@@ -29,7 +28,8 @@ const postSchema = mongoose.Schema({
     demand: String,
 });
 
-postSchema.plugin(mongoosePaginate);
+
 
 const PostProduct = mongoose.model('PostProduct', postSchema);
 export default PostProduct;
+

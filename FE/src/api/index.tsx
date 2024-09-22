@@ -31,9 +31,7 @@ export const fetchProducts = async (props: FetchProductsProps) => {
             `${process.env.NEXT_DOMAIN_URL}/posts?keyword=${keyword}`, 
             { cache: 'no-store' }
         );
-
-        const data = await res.json();
-        const products = data.docs || [];
+        const products = await res.json();
         return products;
     } catch (error) {
         console.error(error);
@@ -57,14 +55,12 @@ export const fetchPhoneProducts = async (props: FetchProductsProps) => {
         } = props?.searchParams || {};
 
         const res = await fetch(
-            `${process.env.NEXT_DOMAIN_URL}/posts?category=phone&brand=${brand}&ram=${ram}&type=${type}&screen=${screen}&storage=${storage}&charger=${charger}&price=${price}&pricerange=${pricerange}&page=${page}&limit=${limit}`,
-            
+            `${process.env.NEXT_DOMAIN_URL}/posts?category=phone&brand=${brand}&ram=${ram}&type=${type}&screen=${screen}&storage=${storage}&charger=${charger}&price=${price}&pricerange=${pricerange}&page=${page}&limit=${limit}`, 
             { cache: 'no-store' }
         );
 
         const data = await res.json();
-        const products = data.docs || [];
-        return products;
+        return data;
     } catch (error) {
         console.error(error);
     }
@@ -91,8 +87,7 @@ export const fetchLaptopProducts = async (props: FetchProductsProps) => {
         );
 
         const data = await res.json();
-        const products = data.docs || [];
-        return products;
+        return data;
     } catch (error) {
         console.error(error);
         return [];

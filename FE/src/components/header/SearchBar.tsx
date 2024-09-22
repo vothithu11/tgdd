@@ -5,7 +5,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from 'next/navigation';
 import querystring from 'querystring';
 
-function SearchBar({ text }) {
+function SearchBar({ text, extraClassInput, extraClassBtn }) {
     const [keyword, setKeyword] = useState('');
 
     const router = useRouter();
@@ -19,6 +19,7 @@ function SearchBar({ text }) {
 
         const newUrl = `/search?${querystring.stringify(paramsObject)}`;
         router.push(newUrl);
+        setKeyword('')
     };
 
     return (
@@ -28,9 +29,9 @@ function SearchBar({ text }) {
                 placeholder={text}
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
-                className="relative w-72 h-11 rounded focus:outline-none p-3 px-6"
+                className={`w-72 h-11 rounded focus:outline-none p-3 px-6 ${extraClassInput}`}
             />
-            <button type="submit" className="absolute w-[36px] h-[36px] top-[10%] right-0">
+            <button type="submit" className={`absolute w-[36px] h-[36px] top-[10%] right-0 ${extraClassBtn}`}>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
         </form>

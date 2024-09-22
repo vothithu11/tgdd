@@ -1,4 +1,3 @@
-import React from 'react';
 
 const ButtonCustom = ({ color, title, handleBuyNow }) => {
     return (

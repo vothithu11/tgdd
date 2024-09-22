@@ -14,7 +14,7 @@ const Input = (props: IInputProps) => {
     const { name, type, label, placeholder, handleChange, handleShowPassword, value } = props;
     return (
         <div className="py-2 space-y-4">
-            <label className="">{label}</label>
+            <label className="flex items-start">{label}</label>
             <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                 <input
                     type={type}

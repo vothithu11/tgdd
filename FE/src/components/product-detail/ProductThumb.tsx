@@ -8,15 +8,15 @@ const ProductThumb = ({ imgURL, changeBigLap, bigLapImg }) => {
     return (
         <div className="text-center space-y-2">
             <div
-                className={`border-2 cursor-pointer flex justify-center ${
+                className={`border cursor-pointer flex justify-center ${
                     bigLapImg === imgURL.bigProduct ? 'border-red-500' : 'border-gray-200'
                 }`}
                 onClick={handleClick}
             >
                 {' '}
-                <img src={imgURL.thumbnail} className="py-1 object-contain" width={50} height={50} />
+                <img src={imgURL.thumbnail} className="py-1 object-contain max-xl:w-[35px] max-xl:h-[35px]" width={50} height={50} />
             </div>
-            <div className="">{imgURL.title}</div>
+            <div className="max-xl:text-sm">{imgURL.title}</div>
         </div>
     );
 };

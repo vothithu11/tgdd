@@ -10,7 +10,7 @@ function CateFuture() {
             extraClassContainer="bg-white rounded-xl p-6 space-y-4"
         >
             {cateFuture.map((value) => (
-                <BoxCate key={value.id} value={value} />
+                <BoxCate key={value.title} value={value} />
             ))}
         </ImageHighLightsLayout>
     );

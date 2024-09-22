@@ -1,3 +1,4 @@
+import ButtonCustom from '../button/ButtonCustom';
 import ProductThumb from './ProductThumb';
 
 const BoxLeft = ({ detailData, bigLapImg, setBigLap }) => {
@@ -30,10 +31,10 @@ const BoxLeft = ({ detailData, bigLapImg, setBigLap }) => {
                 <h3 className="font-semibold">Thông tin sản phẩm</h3>
                 <p className="justify-between text-lg text-justify max-lg:text-base">{detailData.desc}</p>
                 <div>
-                    <img src={detailData.main_image} className="h-[50vh] center-x mx-auto max-xl:h-[20vh]" />
-                    <div className="opacity-50">
-                        <button className="w-full bg-slate-400 p-4 opacity-100">Xem thêm </button>
-                    </div>
+                    <img src={detailData.main_image} className="h-[50vh] center-x mx-auto max-xl:h-[30vh] max-md:h-[20vh]" />
+                    {/* <div className="opacity-50">
+                        < ButtonCustom title='XEM THÊM' color='bg-gradient-to-t from-[#FB6E2E] to-[#FF5126] text-black w-[70%] mx-20 my-10'/>
+                    </div> */}
                 </div>
             </div>
         </div>

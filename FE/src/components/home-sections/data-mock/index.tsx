@@ -153,15 +153,15 @@ export const optionPromo = [
         id: 1,
         images: [
             {
-                name: 'img1',
+                name: 'img11',
                 subImage: option1_promo,
             },
             {
-                name: 'img2',
+                name: 'img12',
                 subImage: option2_promo,
             },
             {
-                name: 'img3',
+                name: 'img13',
                 subImage: option3_promo,
             },
         ],
@@ -171,15 +171,15 @@ export const optionPromo = [
         id: 2,
         images: [
             {
-                name: 'img1',
+                name: 'img21',
                 subImage: option1_promo,
             },
             {
-                name: 'img2',
+                name: 'img22',
                 subImage: option2_promo,
             },
             {
-                name: 'img3',
+                name: 'img23',
                 subImage: option3_promo,
             },
         ],

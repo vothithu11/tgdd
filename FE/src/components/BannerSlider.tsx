@@ -9,12 +9,12 @@ const BannerSlider = ({images, visibleNumber}) => {
   return (
     <Swiper
     modules={[Navigation, Pagination, Scrollbar, A11y]}
-      spaceBetween={30}
+      spaceBetween={10}
       slidesPerView={visibleNumber}
       navigation
       pagination={{ clickable: true }}
     >
-        {images.map((image=><SwiperSlide><img src={image.src} alt='image' className='rounded-md w-full'/></SwiperSlide>))}
+        {images.map(((image,index)=><SwiperSlide key={index}><img src={image.src} alt='image' className='rounded-md w-full' width={595} height={180}/></SwiperSlide>))}
        
     </Swiper>
   );

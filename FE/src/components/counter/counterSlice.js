@@ -28,8 +28,17 @@ const counterSlice = createSlice({
             }
             state.value = state.products.reduce((total, product) => total + product.quantity, 0);
         },
+        increase:(state, action) => {
+            const product = state.products.find((p) => p._id === action.payload._id);
+            if (product) {
+                product.quantity += action.payload.quantity;
+            } else {
+                state.products.push({ ...action.payload, quantity: action.payload.quantity });
+            }
+            state.value = state.products.reduce((total, product) => total + product.quantity, 0);
+        },
     },
 });
 
-export const { increment, decrement } = counterSlice.actions;
+export const { increment, decrement, increase } = counterSlice.actions;
 export default counterSlice.reducer;

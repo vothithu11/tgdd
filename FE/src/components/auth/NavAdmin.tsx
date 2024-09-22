@@ -6,6 +6,8 @@ import { menuBarAdmin } from './data-menu.mocks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import logo from './assets/logo-short.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../counter/nameUserSlice';
 
 interface INameUser {
     name?: string
@@ -13,27 +15,23 @@ interface INameUser {
 
 const NavAdmin = () => {
     const [menuBarVisible, setMenuBarVisible] = useState(false);
+    const nameUser = useSelector((state) => state.nameUser.value);
     const router = useRouter();
+    const dispatch = useDispatch();
+   
     const handleLogout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
-        router.push('/auth');
+        dispatch(logout());
+        router.push('/');
     };
+    
 
-    let nameUserParse: INameUser | null = null;
-    if (typeof localStorage !== 'undefined') {
-        const nameUser: string | null = localStorage.getItem('user');
-        nameUserParse = nameUser ? JSON.parse(nameUser) : null;
-    }
-   
     return (
-        <div className="relative z-10 grid grid-cols-2 bg-[#ff6666] h-12 center px-4 rounded-xl">
-            <Link href={'/'}>
-                <img src={logo.src} alt="logo" className="w-10 h-10 rounded-full" />
-            </Link>
+        <div className="relative flex justify-end items-center bg-custom-gradient h-10 px-4 padding">
             <div className="flex items-center space-x-4">
                 <button onClick={() => setMenuBarVisible(!menuBarVisible)}>
-                    <FontAwesomeIcon icon={faUser} className="h-8" />
+                    <FontAwesomeIcon icon={faUser} className="h-5 text-gray-300" />
                 </button>
                 {menuBarVisible && (
                     <ul className="absolute left-0 w-[95%] bg-slate-50 p-4 rounded-lg shadow-lg top-[100px] text-sm text-gray-700 dark:text-gray-400">
@@ -50,16 +48,16 @@ const NavAdmin = () => {
                     </ul>
                 )}
                 <nav>
-                    {nameUserParse ? (
+                {nameUser !=='' ? (
                         <div className="flex justify-end items-center space-x-4">
-                            <p>Welcome, {nameUserParse.name}</p>
-                            <button onClick={handleLogout} className="cart-btn">
+                            <p className='text-white'>Welcome, {nameUser}</p>
+                            <button onClick={handleLogout} className="text-white text-sm">
                                 LOG-OUT
                             </button>
                         </div>
                     ) : (
-                        <Link href={'/auth'} className="cart-btn">
-                            <button type="submit">SIGN-IN</button>
+                        <Link href={'/auth'} className="text-white text-sm">
+                            <button>SIGN-IN</button>
                         </Link>
                     )}
                 </nav>

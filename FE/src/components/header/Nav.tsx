@@ -6,11 +6,23 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { menuBar } from './data.mocks';
 import { useState } from 'react';
-import logo from './assets/logo.png'
+import logo from './assets/logo.png';
+import AddressForm from './AddressForm';
+import { createPortal } from 'react-dom';
 
 function Nav() {
     const count = useSelector((state) => state.counter.value);
     const [menuBarVisible, setMenuBarVisible] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const handleOpenModal = () => {
+        setShowModal((pre) => !pre);
+    };
+    const handleCloseModal = () => {
+        setShowModal(false);
+    };
+    const place = useSelector(state=>state.placeName.place);
+   
+
 
     return (
         <nav className="w-full h-11 py-4 max-lg:py-1">
@@ -21,13 +33,18 @@ function Nav() {
                     </Link>
                 </li>
                 <li className="text-xs max-xl:hidden">
-                    <a>
-                        <button className="text-xs space-x-2 bg-[#FFBC06] h-12 px-2 ">
-                            <span>Xem giá tồn kho, tại:</span>
-                            <FontAwesomeIcon icon={faSortDown} className="" />
-                            <div className="font-bold">Đà Nẵng</div>
-                        </button>
-                    </a>
+                    <button className="text-xs space-x-2 bg-[#FFBC06] h-12 px-2" onClick={handleOpenModal}>
+                        <span>Xem giá tồn kho, tại:</span>
+                        <FontAwesomeIcon icon={faSortDown} className="" />
+                        <div className="font-bold">{place}</div>
+                    </button>
+                    {showModal &&
+                        createPortal(
+                            <div className="modal">
+                                <AddressForm onClose={handleCloseModal} />
+                            </div>,
+                            document.body,
+                        )}
                 </li>
                 <li className="max-xl:hidden">
                     <SearchBar text={'Bạn tìm gì ...'} />
@@ -57,8 +74,8 @@ function Nav() {
                     <a>Game App</a>
                 </li>
             </ul>
-            <div className="hidden max-xl:grid max-xl:grid-cols-3 relative z-10 items-center justify-items-center">
-                <div className="justify-self-center">
+            <div className="hidden max-xl:min-h-5 max-xl:bg-[#FFBC06] max-xl:grid max-xl:grid-cols-3 relative z-10 items-center justify-items-center px-3.5">
+                <div className="justify-self-start">
                     <Link href="/">
                         <img src={logo.src} alt="logo" className="w-40 h-8" />
                     </Link>
@@ -74,7 +91,7 @@ function Nav() {
                         </button>
                     </Link>
                 </div>
-                <div>
+                <div className='justify-self-end'>
                     <button onClick={() => setMenuBarVisible(!menuBarVisible)}>
                         <FontAwesomeIcon icon={faBars} />
                     </button>

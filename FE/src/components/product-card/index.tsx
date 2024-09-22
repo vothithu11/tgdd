@@ -42,38 +42,39 @@ const ProductCard: React.FC<IProductCardProps> = (props) => {
         battery,
     } = product;
     return (
-        <div className={`py-8 px-4 bg-white m-2 rounded-md ${extraClassContainer} min-h-[510px] max-lg: `}>
+        <div className={`min-h-[490px] max-lg:min-h-[320px] p-2.5 leading-3 rounded-lg border-gray-100 border hover:shadow-lg ${extraClassContainer} max-w-[220px] text-sm`}>
             <Link href={`/${category}/${_id}`}>
                 <MotionDiv whileHover={{ y: -10 }} whileTap={{ y: 0 }} transition={{ duration: 0.2 }}>
-                    <img src={main_image} alt="sp" width={210} height={193} />
+                    <img src={main_image} alt="sp" width={200} height={200} />
                 </MotionDiv>
-                <div className="grid justify-items-center gap-1 mt-2">
-                    <p className="max-lg:text-sm center-x hover:text-blue-custom">{title}</p>
+                <div className="mt-4 max-lg:space-y-2">
+                    <p className="text-sm flex justify-start hover:text-blue-custom min-h-10">{title}</p>
                     {/* <p>{iphone && 'Online giá quả rẻ'}</p> */}
-
+                    <p className="text-red-600 text-lg font-bold">
+                    <FormatPrice price={salePrice}/> <sup>đ</sup>
+                    </p>
                     <div className="">
                         {isPromotion && (
-                            <div className="flex space-x-2">
-                                <span className="line-through text-gray-500 max-lg:text-xs">
-                                    <FormatPrice price={originalPrice}/> <span>đ</span>
+                            <div className="flex space-x-2 text-sm items-center">
+                                <span className="line-through text-gray-500 
+                                ">
+                                    <FormatPrice price={originalPrice}/> <sup>đ</sup>
                                 </span>
                                 <br />
-                                <span className=" p-1 rounded-md bg-[#FFF0E9] max-lg:hidden">
+                                <span className="p-1 text-[13px] text-[#dd2f2c] rounded-md max-lg:hidden">
                                     {promotionPercent}
                                     <span>%</span>
                                 </span>
                             </div>
                         )}
                     </div>
-                    <p className="text-red-600 font-bold max-lg:font-normal">
-                    <FormatPrice price={salePrice}/> <span>đ</span>
-                    </p>
-                    <p>
+                    
+                    <div>
                         <StarRating rating={rate} />
-                    </p>
+                    </div>
                     {moreInfoBtn && (
-                        <ul className="grid justify-items-start gap-2 p-2 text-sm list-disc max-lg:hidden">
-                            <li>{screen}</li>
+                        <ul className="grid justify-items-start gap-2 p-3 text-sm list-disc max-lg:hidden">
+                            <li>Màn hình: {screen}</li>
                             <li>
                                 <span>RAM: </span>
                                 {ram} GB

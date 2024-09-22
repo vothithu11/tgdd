@@ -18,7 +18,7 @@ const StarRating = ({ rating, otherClass = 'text-black text-sm', feedback = fals
     return (
         <div>
             {stars}
-            <span className={`px-2 ${otherClass} max-lg:hidden`}>{Math.floor(Math.random(rating) * 101)}</span>
+            <span className={`px-2 ${otherClass} max-lg:hidden`}>{Math.floor(rating *12)}</span>
             {feedback && <span className={`px-2 ${otherClass}`}>đánh giá</span>}
         </div>
     );

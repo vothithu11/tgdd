@@ -31,39 +31,20 @@ interface IData extends Array<IProductItem> {}
 function DealsLayout(props: IDealsLayoutProps) {
     const { dealsList, image, btn, background, extraClassContainer, moreInfoBtn, title, url } = props;
     return (
-        <div className={`my-14 ${background} w-full rounded-xl max-lg:mt-8`}>
+        <div className={`${background} w-full rounded-xl max-md:mt-8 max-lg:mt-16`}>
             <img width={1354} height={500} src={image} alt="hinh-anh-highlights" />
-
-            {/* <div className="p-5">
-               
-                <div className="grid grid-cols-5 max-lg:grid-cols-2">
-                    {dealsList.map((deal) => (
-                        <ProductCard product={deal} key={deal.id}  />
-                    ))}
-                </div>
-                {btn && <Button />}
-            </div> */}
-            {/* <BannerSliderComponent
-                dataPromo={dealsList}
-                numVisible={numVisible}
-                bgImage={bgImage}
-                moreInfoBtn={moreInfoBtn}
-            /> */}
-            {/* <div className="grid grid-cols-5 max-lg:grid-cols-2">
-                {dealsList.map((deal) => (
-                    
-                ))}
-            </div> */}
-            <BannerSliderComponent dataPromo={dealsList}  moreInfoBtn={moreInfoBtn} visibleNumber={5}/>
-            {btn && (
-                <div className="flex justify-center">
-                    <Link href={url}>
-                        <button className="bg-white p-2 rounded-lg h-12 w-80 mb-4">
-                            {title} {'>'}
-                        </button>
-                    </Link>
-                </div>
-            )}
+            <div className="my-[30px] mx-4 max-lg:pb-6 max-lg:mx-auto max-md:w-[230px] max-lg:w-[700px]">
+                    <BannerSliderComponent dataPromo={dealsList} moreInfoBtn={moreInfoBtn} visibleNumber={5} />
+                {btn && (
+                    <div className="flex justify-center mt-[20px] max-lg:hidden">
+                        <Link href={url}>
+                            <button className="bg-white p-2 rounded-lg h-12 w-80 mb-4">
+                                {title} {'>'}
+                            </button>
+                        </Link>
+                    </div>
+                )}
+            </div>
         </div>
     );
 }

@@ -6,16 +6,24 @@ import Link from 'next/link';
 function MenuBar({ menuBar }) {
     return (
         <section className="py-8 w-full h-11 max-xl:hidden">
-            <ul className="center text-sm">
+            <div className="center text-sm">
                 {menuBar.map((menu) => (
-                    <Link href={menu.link} key={menu.id} className="center space-x-3 ">
-                        <FontAwesomeIcon icon={menu.icon} />
-                        <li key={menu.id}>{menu.title}</li>
-                        {menu.completed && <FontAwesomeIcon icon={faSortDown} />}
-                        {/* {menu.completed && <SubMenuBar />} */}
-                    </Link>
+                   <div className="relative group" key={menu.id}>
+                   <Link href={menu.link}>
+                       <div className="center space-x-3">
+                           <FontAwesomeIcon icon={menu.icon} />
+                           <div>{menu.title}</div>
+                           {menu.completed && <FontAwesomeIcon icon={faSortDown} />}
+                       </div>
+                   </Link>
+                   {menu.completed && (
+                       <div className="hidden group-hover:block before:content-[''] before:absolute before:w-full before:h-10 before:opacity-0">
+                           <SubMenuBar submenu={menu.submenu} />
+                       </div>
+                   )}
+               </div>
                 ))}
-            </ul>
+            </div>
         </section>
     );
 }

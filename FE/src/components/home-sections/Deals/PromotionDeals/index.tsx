@@ -6,13 +6,13 @@ const PromotionDeals = ({ dataLaptopRandom }) => {
         <DealsLayout
             image={promotion_deals.src}
             btn={true}
-            dealsList={dataLaptopRandom}
+            dealsList={dataLaptopRandom.slice(0,10)}
             background='bg-[#960500]'
             extraClassContainer='none'
             moreInfoBtn={true}
             title='Xem thêm sản phẩm'
             url="/laptop"
-        ></DealsLayout>
+            />
     );
 };
 

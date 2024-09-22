@@ -4,6 +4,7 @@ import Input from './Input';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
 
 const Auth = ({ formData, handleChange, handleSubmit, isSignup, switchMode }) => {
     const [showPassword, setShowPassword] = useState(false);

@@ -6,13 +6,13 @@ const FlashSaleDeals = ({ dataFlashSaleRandom }) => {
         <DealsLayout
             image={flash_sale_deals.src}
             btn={true}
-            dealsList={dataFlashSaleRandom}
+            dealsList={dataFlashSaleRandom.slice(0,10)}
             background={'bg-[#D91D03]'}
             extraClassContainer={'none'}
             moreInfoBtn={true}
             title={'Xem thêm sản phẩm'}
             url="/phone"
-        ></DealsLayout>
+        />
     );
 };
 

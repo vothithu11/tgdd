@@ -10,11 +10,11 @@ interface IImageHightLightsLayoutProps {
 const ImageHighLightsLayout: React.FC<IImageHightLightsLayoutProps> = (props) => {
     const { extraClassContainer, extraClassChildren, title, children } = props;
     return (
-        <div className={`my-8 ${extraClassContainer}`}>
-            <h2 className="text-2xl uppercase font-semibold">{title}</h2>
+        <div className={`${extraClassContainer} last:py-[30px]`}>
+            <h2 className="text-2xl uppercase font-semibold pb-[30px]">{title}</h2>
             <div className={`grid ${extraClassChildren} gap-1`}>{children}</div>
         </div>
     );
 };
 
-export default ImageHighLightsLayout;
+export default ImageHighLightsLayout;   

@@ -1,27 +1,28 @@
-import { useState, useEffect } from 'react';
 
-const ButtonBrandName = ({ filter, onSelect, resetFilters }) => {
-    const [isActive, setIsActive] = useState(false);
+// import { useState, useEffect } from 'react';
 
-    useEffect(() => {
-        setIsActive(false);
-    }, [resetFilters]);
+// const ButtonBrandName = ({ filter, onSelect, resetFilters }) => {
+//     const [isActive, setIsActive] = useState(false);
 
-    const handleClickBtn = () => {
-        setIsActive(!isActive);
-        onSelect({ brand: filter.value });
-    };
+//     useEffect(() => {
+//         setIsActive(false);
+//     }, [resetFilters]);
 
-    return (
-        <div
-            className={`border-2 rounded-full mx-2 cursor-pointer ${
-                isActive ? 'border-blue-700' : 'hover:border-blue-500'
-            }`}
-            onClick={handleClickBtn}
-        >
-            <img src={filter.image.src} alt={filter.name} className="rounded-full" />
-        </div>
-    );
-};
+//     const handleClickBtn = () => {
+//         setIsActive(!isActive);
+//         onSelect({ brand: filter.value });
+//     };
 
-export default ButtonBrandName;
+//     return (
+//         <div
+//             className={`border-2 rounded-full mx-2 cursor-pointer ${
+//                 isActive ? 'border-blue-700' : 'hover:border-blue-500'
+//             }`}
+//             onClick={handleClickBtn}
+//         >
+//             <img src={filter.image.src} alt={filter.name} className="rounded-full" />
+//         </div>
+//     );
+// };
+
+// export default ButtonBrandName;

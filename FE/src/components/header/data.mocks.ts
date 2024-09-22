@@ -34,6 +34,11 @@ export const menuBar = [
         icon: faHeadphones,
         completed: true,
         link: '/',
+        submenu: [
+            { title: 'THANH TOÁN HÓA ĐƠN 1', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 2', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 3', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+        ],
     },
     {
         title: 'Smartwatch',
@@ -55,6 +60,11 @@ export const menuBar = [
         icon: faMobileScreenButton,
         completed: true,
         link: '/',
+        submenu: [
+            { title: 'THANH TOÁN HÓA ĐƠN 1', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 2', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 3', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+        ],
     },
     {
         title: 'PC, Máy in',
@@ -62,6 +72,11 @@ export const menuBar = [
         icon: faDesktop,
         completed: true,
         link: '/',
+        submenu: [
+            { title: 'THANH TOÁN HÓA ĐƠN 1', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 2', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 3', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+        ],
     },
     {
         title: 'Sim, Thẻ cào',
@@ -76,9 +91,10 @@ export const menuBar = [
         icon: faDesktop,
         completed: true,
         link: '/',
+        submenu: [
+            { title: 'THANH TOÁN HÓA ĐƠN 1', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 2', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+            { title: 'THANH TOÁN HÓA ĐƠN 3', sub: ['Đóng tiền trả góp', 'Đóng tiền điện', 'Đóng tiền nước'] },
+        ],
     },
 ];
-
-
-
-

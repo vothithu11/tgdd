@@ -14,15 +14,27 @@ import { blockPromo, blockPromoAdd } from './details.mocks';
 import Link from 'next/link';
 import FormatPrice from '../FormatPrice';
 import logo_mini from './assets/logo-mini.png'
+import { useDispatch, useSelector } from 'react-redux';
+import { openModal } from '../counter/uiSlice';
+import CartItem from './CartItem'
 
-const BoxRight = ({ handleBuyNow, detailData, visible, showMoreItems }) => {
+const BoxRight = ({detailData, visible, showMoreItems }) => {
     const [checked, setChecked] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const dispatch = useDispatch();
+    const handleClose = () => {
+        setShowModal(false);
+    };
+    const handleBuyNow = () => {
+        setShowModal(true);
+    };
+    const place = useSelector(state=>state.placeName.place);
     return (
-        <div className="col-span-2 ml-8 space-y-3 max-lg:col-span-5">
+        <div className="col-span-2 ml-8 space-y-3 max-lg:col-span-5 max-lg:ml-0">
             <div>
                 Giá tại{' '}
                 <span className="text-blue-custom">
-                    Hồ Chí Minh <FontAwesomeIcon icon={faChevronDown} className="text-blue-custom" />
+                <span>{place.split(',')[0].trim()} </span> <FontAwesomeIcon icon={faChevronDown} className="text-blue-custom" />
                 </span>
             </div>
             <div className="space-x-1">
@@ -85,13 +97,13 @@ const BoxRight = ({ handleBuyNow, detailData, visible, showMoreItems }) => {
                     </div>
                 </button>
                 <div className="mt-3">
-                    <Link href="/cart">
+                      
                         <ButtonCustom
                             color={'bg-[#FB6E2E] border-[#FB6E2E] w-full text-white text-lg'}
-                            title={'MUA NGAY'}
+                            title='MUA NGAY'
                             handleBuyNow={handleBuyNow}
                         />
-                    </Link>
+                        {showModal && ( <CartItem showModal={showModal} handleClose={handleClose} detailData={detailData}/>)}
                 </div>
                 <div className="grid grid-cols-2 gap-x-2">
                     <ButtonCustom
@@ -118,6 +130,7 @@ const BoxRight = ({ handleBuyNow, detailData, visible, showMoreItems }) => {
                 <div className="space-y-4 p-1 text-sm text-justify">
                     {blockPromoAdd.slice(0, visible).map((promo) => (
                         <PromoItem
+                        key={promo.title}
                             customColor={'bg-[#33AC41]'}
                             style={{ color: '#fcfcfc' }}
                             icon={promo.icon}
