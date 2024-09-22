@@ -6,19 +6,18 @@ import PromotionDeals from '@/components/home-sections/Deals/PromotionDeals';
 import {fetchLaptopProducts, fetchPhoneProducts} from '@/api';
 
 export default async function Home() {
-    const dataFlashSaleRandom = await fetchPhoneProducts({});
+    const dataFlashSaleRandom = await fetchPhoneProducts({}) || [];
     const dataLaptopRandom = await fetchLaptopProducts({});
+    console.log('dataFlashSaleRandom',dataFlashSaleRandom)
     return (
         <main className="bg-[#f3efef] space-y-[30px]">
             <section className="padding max-lg:hidden">
                 <Banner />
             </section>
             <section className="padding">
-                {dataFlashSaleRandom?.length === 0 ? (
-                    <section>no data</section>
-                ) : (
+              
                     <FlashSaleDeals dataFlashSaleRandom={dataFlashSaleRandom} />
-                )}
+              
             </section>
             <section className="padding">
                 <PromotionDeals dataLaptopRandom={dataLaptopRandom} />
