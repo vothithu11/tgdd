@@ -5,7 +5,6 @@ const AllPopverCard = ({filter, onSelect }) => {
   const handleChange =(value)=>{
     onSelect({ [filter.queryName]: value });
   }
-  console.log('filter',filter)
   return (
     <div className='my-1 py-1'>
         <p className='max-lg:text-xs'>{filter.placeholder}</p>

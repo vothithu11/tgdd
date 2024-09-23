@@ -10,11 +10,9 @@ const uiSlice = createSlice({
     initialState,
     reducers: {
       openModal: (state) => {
-        console.log('Opening modal');
         state.cartIsVisible = true;
       },
       closeModal: (state) => {
-        console.log('Closing modal');
         state.cartIsVisible = false;
       },
     },

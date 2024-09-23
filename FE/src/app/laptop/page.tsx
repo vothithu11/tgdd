@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { fetchLaptopProducts } from '@/api';
 import ProductsPage from '@/components/products-page';
 import { filterDataLaptop } from '@/components/products-page/products-data.mocks';

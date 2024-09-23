@@ -19,11 +19,9 @@ function AddressForm({ onClose }) {
     useEffect(() => {
         if (indexPlace.length === 3) {
             onClose();
-            console.log("Selected Places: ", selectedPlaceNames); 
             dispatch(submitPlace(selectedPlaceNames));
         }
     }, [indexPlace]);
-    console.log('check type data', typeof(selectedPlaceNames), selectedPlaceNames);
     useEffect(() => {
         async function fetchData() {
             try {

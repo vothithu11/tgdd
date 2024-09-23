@@ -29,10 +29,11 @@ export const fetchProducts = async (props: FetchProductsProps) => {
 
         const res = await fetch(
             `${process.env.NEXT_DOMAIN_URL}/posts?keyword=${keyword}`, 
-            { cache: 'no-store' }
-        );
+            {
+                next: { revalidate: 60 },
+            });
         if (!res.ok) {
-            throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+            throw new Error('Failed to fetch products');
         }
         const products = await res.json();
         return products;
@@ -59,10 +60,11 @@ export const fetchPhoneProducts = async (props: FetchProductsProps) => {
 
         const res = await fetch(
             `${process.env.NEXT_DOMAIN_URL}/posts?category=phone&brand=${brand}&ram=${ram}&type=${type}&screen=${screen}&storage=${storage}&charger=${charger}&price=${price}&pricerange=${pricerange}&page=${page}&limit=${limit}`, 
-            { cache: 'no-store' }
-        );
+            {
+                next: { revalidate: 60 },
+            });
         if (!res.ok) {
-            throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+            throw new Error('Failed to fetch products');
         }
         const data = await res.json();
         return data;
@@ -89,10 +91,11 @@ export const fetchLaptopProducts = async (props: FetchProductsProps) => {
         const res = await fetch(
             `${process.env.NEXT_DOMAIN_URL}/posts?category=laptop&brand=${brand}&ram=${ram}&type=${type}&screen=${screen}&storage=${storage}&charger=${charger}&price=${price}&pricerange=${pricerange}&page=${page}&limit=${limit}`,
             
-            { cache: 'no-store' }
-        );
+            {
+                next: { revalidate: 60 },
+            });
         if (!res.ok) {
-            throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
+            throw new Error('Failed to fetch products');
         }
         const data = await res.json();
         return data;
@@ -104,7 +107,12 @@ export const fetchLaptopProducts = async (props: FetchProductsProps) => {
 
 export const fetchProductDetail = async (_id: FetchProductDetailProps) => {
     try {
-        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts/${_id}`, { cache: 'no-store' });
+        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts/${_id}`, {
+            next: { revalidate: 60 },
+        });
+        if (!res.ok) {
+            throw new Error('Failed to fetch product');
+        }
         const data = await res.json() || [];
         return data; 
     } catch (error) {

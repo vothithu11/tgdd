@@ -39,7 +39,6 @@ const ProductsPage: React.FC = (props) => {
 
     const showPopup = (queryName: string) => {
         setOpenPopup((prev) => (prev === queryName ? '' : queryName));
-        console.log('Popup toggled for: ', queryName);
     }
     useEffect(() => {
         setIsLoading(false);
