@@ -25,7 +25,7 @@ const FormItem = ({ name, post, setPost }) => {
 
 const Form = ({ post, setPost, handleSubmit }) => {
     return (
-        <form className="padding-y" onSubmit={handleSubmit}>
+        <form className="padding-y padding" onSubmit={handleSubmit}>
             <div className="space-y-12">
                 <div className="border-b border-gray-900/10 pb-12">
                     <h2 className="text-base font-semibold leading-7 text-gray-900">Create Product</h2>

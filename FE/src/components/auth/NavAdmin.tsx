@@ -50,7 +50,7 @@ const NavAdmin = () => {
                 <nav>
                 {nameUser !=='' ? (
                         <div className="flex justify-end items-center space-x-4">
-                            <p className='text-white'>Welcome, {nameUser}</p>
+                            <p className='text-white'>Welcome, {nameUser.name}</p>
                             <button onClick={handleLogout} className="text-white text-sm">
                                 LOG-OUT
                             </button>
