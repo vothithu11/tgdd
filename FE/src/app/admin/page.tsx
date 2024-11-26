@@ -1,49 +1,36 @@
-'use client';
-
-import NavAdmin from '@/components/auth/NavAdmin';
+'use client'
 import Form from '../../components/auth/Form';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
+interface IFormData{
+  title: string;
+  desc: string;
+  salePrice: number;
+  main_image:string,
+}
 const AdminPage = () => {
-    const initialState = {
-        brand: '',
-        title: '',
-        ram: '',
-        originalPrice: '',
-        salePrice: '',
-        promotionPercent: '',
-        desc: '',
-        storage: '',
-        battery: '',
-    };
-    const router = useRouter();
-    const [post, setPost] = useState(initialState);
-    let token: string | null;
-    if (typeof localStorage !== 'undefined') {
-        token = localStorage.getItem('token');
+
+  const createProduct = async (formData:IFormData) => {
+    try {
+   
+      if (!formData) return; 
+
+      const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/posts`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(formData),  
+      });
+
+      if (response.ok) {
+        console.log('ok') 
+      }
+    } catch (error) {
+      console.error(error); 
     }
-    const createProduct = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/posts`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(post),
-            });
+  };
 
-            if (response.ok) {
-                router.push('/');
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    return <Form post={post} setPost={setPost} handleSubmit={createProduct} />;
+  return <Form handleProduct={createProduct} />;
 };
 
 export default AdminPage;

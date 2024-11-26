@@ -1,8 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faStarHalfStroke } from '@fortawesome/free-solid-svg-icons';
+interface IStarRatingProps {
+    rating: number;
+    otherClass?: string; 
+    feedback?: boolean; 
+}
 
-const StarRating = ({ rating, otherClass = 'text-black text-sm', feedback = false }) => {
+const StarRating = ({ rating, otherClass = 'text-black text-sm', feedback = false }:IStarRatingProps) => {
     const stars = [];
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;

@@ -1,22 +1,21 @@
 'use client';
 import Auth from '@/components/auth/Auth';
-import NavAdmin from '@/components/auth/NavAdmin';
+import { saveName } from '@/components/slice/nameUserSlice';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { signin} from '../../components/counter/nameUserSlice';
 
 const AuthPage = () => {
     const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
     const dispatch = useDispatch();
     const [formData, setFormData] = useState(initialState);
     const [isSignup, setIsSignup] = useState(false);
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
     const switchMode = () => setIsSignup((prev) => !prev);
     const router = useRouter();
-    const auth = async (e) => {
+    const auth = async (e:React.FormEvent) => {
         e.preventDefault();
         const endpoint = isSignup ? 'signup' : 'signin';
         try {
@@ -28,14 +27,15 @@ const AuthPage = () => {
                 body: JSON.stringify(formData),
             });
             const data = await response.json();
-            if (data.token) {
+            if (data) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.result));
-                dispatch(signin({ name: data.result.name }));
-                router.push('/admin');
-            }
-            if (response.ok) {
-                router.push('/admin');
+                dispatch(saveName(localStorage.getItem('user')));
+                if (data.result.isAdmin) {
+                    router.push('/admin');
+                } else {
+                    router.push('/');
+                }
             }
         } catch (error) {
             console.log(error);
@@ -43,8 +43,7 @@ const AuthPage = () => {
     };
 
     return (
-        <div className=" padding padding-y center-x bg-custom-gradient">
-            {/* <NavAdmin /> */}
+        
             <Auth
                 handleSubmit={auth}
                 handleChange={handleChange}
@@ -52,7 +51,7 @@ const AuthPage = () => {
                 isSignup={isSignup}
                 switchMode={switchMode}
             />
-        </div>
+      
     );
 };
 

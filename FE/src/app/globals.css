@@ -11,53 +11,32 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #1d2939;
   }
-
-
-
-@layer components {
-    .max-container {
-        max-width: 1440px;
-        margin: 0 auto;
+  @layer components {
+    .spinner {
+      margin: 50px auto;
+      width: 60px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 8px solid#ccd8e0;
+      border-right-color: #288AD6;
+      animation: rotate 1s infinite linear;
     }
   
-}
+  
+    @keyframes rotate {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+  }
 
 @layer utilities {
-    .padding {
-        @apply px-40 max-xl:px-4;
-    }
-    .center {
-        @apply flex justify-between items-center;
-    }
-    .center-x {
-        @apply flex justify-center items-center text-center;
-    }
-    .padding-y {
-        @apply py-8;
-    }
-    .cart-btn {
-        @apply py-1.5 px-2 border-2 border-red-500 rounded-md text-sm max-lg:text-xs cursor-pointer bg-[#f6f7f8] text-red-500 hover:bg-red-500 hover:text-white active:bg-red-700 active:text-white;
-    }
-    .background-auth {
-        height: 100vh;
-        background-color: #ffffff;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg stroke='%23CCC' stroke-width='0' %3E%3Crect fill='%23F5F5F5' x='-60' y='-60' width='110' height='240'/%3E%3C/g%3E%3C/svg%3E");
-    }
+    
     .text-blue-custom {
         @apply text-[#288AD6];
-    }
-    .border-gray-custom {
-        @apply border-gray-200;
-    }
-    .gridCol .swiper-button-next {
-        @apply bg-white bg-opacity-80 text-gray-500 p-6 py-8 rounded-lg shadow cursor-pointer absolute -right-[10px] z-10; /* Nền trắng mờ, mũi tên đen, làm tròn và có khoảng cách */
-      }
-      .gridCol .swiper-button-prev {
-        @apply bg-white bg-opacity-80 text-gray-500 p-6 py-8 rounded-lg shadow cursor-pointer absolute -left-[10px] z-10; /* Nền trắng mờ, mũi tên đen, làm tròn và có khoảng cách */
-      }
-    .background-gradient{
-        @apply  bg-gradient-to-r from-[#A3AF73] to-[#DA954E];
     }
       
    

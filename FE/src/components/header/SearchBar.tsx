@@ -1,41 +1,32 @@
-'use client';
-import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+'use client'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react'
 import querystring from 'querystring';
 
-function SearchBar({ text, extraClassInput, extraClassBtn }) {
-    const [keyword, setKeyword] = useState('');
+function SearchBar() {
+  const [keyword, setKeyword] = useState('');
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newSearchParams = new URLSearchParams();
-        newSearchParams.set('keyword', keyword);
+  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const newSearchParams = new URLSearchParams();
+      newSearchParams.set('keyword', keyword);
 
-        const paramsObject = Object.fromEntries(newSearchParams.entries());
+      const paramsObject = Object.fromEntries(newSearchParams.entries());
 
-        const newUrl = `/search?${querystring.stringify(paramsObject)}`;
-        router.push(newUrl);
-        setKeyword('')
-    };
-
-    return (
-        <form onSubmit={handleSubmit} className="center relative ">
-            <input
-                type="text"
-                placeholder={text}
-                value={keyword}
-                onChange={(e) => setKeyword(e.target.value)}
-                className={`w-72 h-11 rounded focus:outline-none p-3 px-6 ${extraClassInput}`}
-            />
-            <button type="submit" className={`absolute w-[36px] h-[36px] top-[10%] right-0 ${extraClassBtn}`}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-        </form>
-    );
+      const newUrl = `/search?${querystring.stringify(paramsObject)}`;
+      router.push(newUrl);
+      setKeyword('');
+  };
+  return (
+    <form className='h-10 w-[415px] bg-white rounded-[32px] flex items-center space-x-[1px]' onSubmit={handleSubmit}>
+        <FontAwesomeIcon icon={faMagnifyingGlass} className='ml-3 text-gray-400 w-[17px] h-[17px]' />
+        <input value={keyword} type="text" placeholder='Bạn tìm gì...' className='bg-transparent flex-1 h-full border-none outline-none pr-6 pl-2 leading-[14px]' onChange={(e)=>setKeyword(e.target.value)}/>
+    </form>
+  )
 }
 
-export default SearchBar;
+export default SearchBar

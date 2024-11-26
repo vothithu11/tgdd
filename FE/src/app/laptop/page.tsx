@@ -1,31 +1,23 @@
-export const dynamic = 'force-dynamic';
-import { fetchLaptopProducts } from '@/api';
-import ProductsPage from '@/components/products-page';
-import { filterDataLaptop } from '@/components/products-page/products-data.mocks';
-interface SearchParams {
-    category?: string;
-    brand?: string;
-    ram?: number;
-    type?: string;
-    screen?: number;
-    storage?: number;
-    charger?: number;
-    price?: number;
-    pricerange?: number;
-    page?: number;
-    limit?: number;
-    keyword?:string,
+import { fetchLaptop } from '@/api';
+import { IProduct, ISearchParams } from '@/components/type';
+import ProductsLayout from '@/components/ProductsLayout';
+import Filter from '@/components/Filter';
+import {  filterDataLaptop, filterDataLaptopPopular } from '@/components/data.mocks';
+interface ILaptopPage {
+    searchParams: ISearchParams
 }
 
-interface LaptopPageProps {
-    searchParams?: SearchParams;
-}
-const LaptopPage = async ({ searchParams }:LaptopPageProps) => {
-    const products = await fetchLaptopProducts({ searchParams });
+const LaptopPage = async ({ searchParams }:ILaptopPage) => {
+    const products:IProduct[] = await fetchLaptop({
+        brand: [].concat(searchParams.brand),
+        ram: [].concat(searchParams.ram),
+        storage:[].concat(searchParams.storage),
+        demand:[].concat(searchParams.demand),
+        salePrice: searchParams.salePrice,
+        sort:  searchParams.sort,
+    });
     return (
-        <div>
-             <ProductsPage products={products}  filterData={filterDataLaptop}/>
-        </div>
+     <ProductsLayout quantity={products?.length} title='Laptop' products={products}><Filter filterData={filterDataLaptop} filterDataPopular={filterDataLaptopPopular}/></ProductsLayout>
     );
 };
 

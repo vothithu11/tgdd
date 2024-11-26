@@ -1,11 +1,15 @@
-import ProductDetail from '@/components/product-detail';
-import { fetchProductDetail } from '@/api';
+import {fetchPhoneProducts, fetchProductDetail} from '@/api';
+import ProductDetailLayout from '@/components/ProductDetailLayout';
+import { IProduct } from '@/components/type';
 
-const LaptopDetail = async (props) => {
-    const _id = props?.params?._id;
-    const dataProduct = await fetchProductDetail(_id);
+const LaptopDetail = async ({params}: { params: { _id: string } } ) => {
+    const _id = params._id;
+    const dataProduct: IProduct = await fetchProductDetail(_id);
+    const dataMore: IProduct[]= await fetchPhoneProducts();
 
-    return <ProductDetail dataProduct={dataProduct} />;
+    return (
+        <ProductDetailLayout dataProduct={dataProduct} dataMore={dataMore} label='Laptop' />
+    );
 };
 
 export default LaptopDetail;
