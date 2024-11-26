@@ -12,7 +12,11 @@ const app = express();
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://tgdd-nodejs-2dcg05qfd-vothithu11s-projects.vercel.app'],  
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
 app.use('/orders',orderRoutes);
