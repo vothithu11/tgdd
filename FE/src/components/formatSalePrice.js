@@ -1,4 +1,4 @@
-export const formatPrice = (price) => {
+export const formatSalePrice = (price) => {
     if (isNaN(price) || price === null || price === undefined) {
         return 'Invalid price';
     }

@@ -21,7 +21,7 @@ import SelectedPlace from '@/components/SelectedPlace';
 import AddressModal from '@/components/AddressModal';
 import Info from './info/Info';
 import { IProduct } from './type';
-import { formatPrice } from './FormatPrice';
+import { formatSalePrice } from './formatSalePrice';
 interface IProductDetailLayoutProps {
     dataProduct: IProduct,
     dataMore: IProduct[],
@@ -124,7 +124,7 @@ function ProductDetailLayout({dataProduct,dataMore,label}:IProductDetailLayoutPr
                     </p>
                     <div className="flex gap-2 items-center">
                         <span className="flex gap-1 items-center text-[#d92d20] font-bold text-xl">
-                        {formatPrice(salePrice)} <sup>đ</sup>
+                        {formatSalePrice(salePrice)} <sup>đ</sup>
                         </span>
                         <span className="bg-[#f2f4f7] text-[10px] rounded-2xl p-0.5">Trả góp 0%</span>
                     </div>

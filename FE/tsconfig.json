@@ -21,6 +21,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/slice/nameUserSlice.js", "src/components/FormatPrice.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/slice/nameUserSlice.js", "src/components/formatSalePrice.js"],
   "exclude": ["node_modules"]
 }

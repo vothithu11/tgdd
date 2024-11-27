@@ -6,7 +6,7 @@ import { IProduct } from '../type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { formatPrice } from '../FormatPrice';
+import { formatSalePrice } from '../formatSalePrice';
 
 // interface IProductCardProps {
 //     product: IProductItem;
@@ -65,7 +65,7 @@ const ProductCard: React.FC<IProductCardProps> = (props) => {
                                     className="line-through text-gray-500
                                 "
                                 >
-                                    {formatPrice(originalPrice)}<sup>đ</sup>
+                                    {formatSalePrice(originalPrice)}<sup>đ</sup>
                                 </span>
                                 <br />
                                 <span className="text-[#dd2f2c] rounded-md max-lg:hidden">
@@ -75,7 +75,7 @@ const ProductCard: React.FC<IProductCardProps> = (props) => {
                             </div>
                         )}
                     <p className="text-red-600 text-xl font-bold">
-                    {formatPrice(salePrice)} <sup>đ</sup>
+                    {formatSalePrice(salePrice)} <sup>đ</sup>
                     </p>
                     <div className='mt-2 flex justify-between text-xs'> 
                         <span>

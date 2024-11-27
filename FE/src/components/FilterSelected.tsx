@@ -3,7 +3,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import { IPendingFilter, RootState } from './type';
-import { formatPrice } from './FormatPrice';
+import { formatSalePrice } from './formatSalePrice';
 
 interface IFilterSelectedProps {
     handleValue: (key: string, value: string | number) => void;
@@ -32,7 +32,7 @@ function FilterSelected({ handleValue, handleCancel }: IFilterSelectedProps) {
                                     <FontAwesomeIcon icon={faXmark} className="w-2.5 h-2.5" />
                                 </button>
                                 
-                            )):<span  className="w-max h-full border py-1 px-3 rounded-lg border-[#e0e0e0] hover:border-[#288AD6] flex gap-0.5 items-center">Từ {formatPrice(Number(value[0]))} - {formatPrice(Number(value[1]))} đ</span>}
+                            )):<span  className="w-max h-full border py-1 px-3 rounded-lg border-[#e0e0e0] hover:border-[#288AD6] flex gap-0.5 items-center">Từ {formatSalePrice(Number(value[0]))} - {formatSalePrice(Number(value[1]))} đ</span>}
                     </div>
                 ))}
             {!isEmpty && (

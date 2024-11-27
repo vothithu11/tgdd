@@ -10,7 +10,8 @@ import AddressModal from '@/components/AddressModal';
 import { FieldValues, useForm } from 'react-hook-form';
 import { createOrder } from '@/api';
 import toast, { Toaster } from 'react-hot-toast';
-import { formatPrice } from '../../components/FormatPrice';
+import { formatSalePrice } from '@/components/formatSalePrice';
+
 
 const CartPage = () => {
     const { value, products } = useSelector((state: RootState) => state.counter);
@@ -81,7 +82,7 @@ const CartPage = () => {
                                             <div className="flex justify-between flex-1">
                                                 <h2 className="text-[#101828]">{product.title}</h2>
                                                 <p className="">
-                                                   {formatPrice(product.salePrice)}<span> đ</span>
+                                                   {formatSalePrice(product.salePrice)}<span> đ</span>
                                                 </p>
                                             </div>
                                         </div>
@@ -93,7 +94,7 @@ const CartPage = () => {
                             <p className="flex justify-between pt-3">
                                 Tạm tính:
                                 <span className="text-red-600 font-base ml-4 max-lg:text:base  max-lg:font-bold">
-                                {formatPrice(totalCost)} đ
+                                {formatSalePrice(totalCost)} đ
                                 </span>
                             </p>
                         </div>
@@ -169,13 +170,13 @@ const CartPage = () => {
                             <p className="flex justify-between border-b-2">
                                 <span>Tổng tiền:</span>
                                 <span className="text-red-600 font-base ml-4 max-lg:text:base max-lg:font-bold">
-                                {formatPrice(totalCost)} đ
+                                {formatSalePrice(totalCost)} đ
                                 </span>
                             </p>
                             <p className="flex justify-between">
                                 <span>Điểm tích lũy quà tặng VIP:</span>
                                 <span className=" font-base ml-4 max-lg:text:base max-lg:font-bold">
-                                {formatPrice(totalCost/1000 )} điểm
+                                {formatSalePrice(totalCost/1000 )} điểm
                                 </span>
                             </p>
                             <div className="flex justify-start space-x-4">
