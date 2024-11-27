@@ -11,3 +11,14 @@ export const createOrder = async (req, res) => {
   }
 };
 
+export const getOrders = async (req, res) => {
+  try {
+    const orders = await Order.find()
+
+    res.status(200).json(orders);
+  } catch (error) {
+   res.status(500).json({ message: "Error fetching orders", error: error.message });
+  }
+};
+
+

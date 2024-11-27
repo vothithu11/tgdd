@@ -1,5 +1,5 @@
 'use client'
-import Form from '../../components/auth/Form';
+import Form from "@/components/auth/Form"
 interface IFormData{
   title: string;
   desc: string;

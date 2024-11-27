@@ -60,11 +60,14 @@ export interface RootState {
     }
 }
 export interface IOrder {
+    _id?:string;
+    date?:string;
     products: {
         title: string;
         quantity: number | undefined;
         salePrice: number;
     }[];
+    name:string;
     address: string | null;
     totalPrice: number;
 }

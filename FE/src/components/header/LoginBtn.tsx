@@ -11,6 +11,7 @@ import { RootState } from '../type';
 function LoginBtn() {
     const [openModal,setOpenModal]=useState(false);
     const [name, setName]=useState<string | null>(null);
+    const [isAdmin, setIsAdmin]=useState<boolean>(false);
     const dispatch = useDispatch();
     const user =useSelector((state:RootState)=>state.userName.name);
     const router = useRouter();
@@ -18,11 +19,11 @@ function LoginBtn() {
         const convertName = localStorage.getItem('user');
         if(convertName){
             setName(JSON.parse(convertName)?.name);
-            dispatch(saveName(convertName));
+            dispatch(saveName((convertName)));
+            setIsAdmin(JSON.parse(convertName)?.isAdmin);
         }else{
             setName(user)
         }
-       
     },[user])
     
     const handleLogout =()=>{
@@ -38,6 +39,7 @@ function LoginBtn() {
            setOpenModal(pre=>!pre)
         }
     }
+    console.log(user,'redux toolkit')
     return (
         <div onClick={handleLogin}>
             <div className='relavtive'>
@@ -45,11 +47,16 @@ function LoginBtn() {
             <FontAwesomeIcon icon={faUser} className="w-6 h-6" />
             <span>{name?name: 'Đăng nhập'}</span>
         </button>
-            {openModal && name !==null && <div className='flex absolute z-20 top-[65px] flex-col items-center gap-1.5 bg-slate-100 p-2.5 rounded-lg'>
+            {openModal && name !==null && isAdmin&& <div className='flex absolute z-20 top-[65px] flex-col items-center gap-1.5 bg-slate-100 p-2.5 rounded-lg'>
+                <Link href='/admin/orders'>
                 <span className="hover:bg-slate-400 w-full px-2.5 py-1 rounded-lg">Orders</span>
-                <Link href='/admin'>
+                </Link>
+                <Link href='/admin/create'>
                 <span className="hover:bg-slate-400 w-full px-2.5 py-1 rounded-lg">Create Product</span>
                 </Link>
+                <button onClick={handleLogout} className='px-2.5 py-1 rounded-lg bg-orange-400 w-full'>Logout</button>
+            </div> }
+            {openModal && name !==null && !isAdmin &&<div className='flex absolute z-20 top-[65px] flex-col items-center gap-1.5 bg-slate-100 p-2.5 rounded-lg'>
                 <button onClick={handleLogout} className='px-2.5 py-1 rounded-lg bg-orange-400 w-full'>Logout</button>
             </div> }
             </div>

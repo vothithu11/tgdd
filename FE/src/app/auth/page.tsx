@@ -32,7 +32,7 @@ const AuthPage = () => {
                 localStorage.setItem('user', JSON.stringify(data.result));
                 dispatch(saveName(localStorage.getItem('user')));
                 if (data.result.isAdmin) {
-                    router.push('/admin');
+                    router.push('/admin/orders');
                 } else {
                     router.push('/');
                 }
