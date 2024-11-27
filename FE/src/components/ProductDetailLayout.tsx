@@ -21,7 +21,7 @@ import SelectedPlace from '@/components/SelectedPlace';
 import AddressModal from '@/components/AddressModal';
 import Info from './info/Info';
 import { IProduct } from './type';
-import { formatPrice } from './formatPrice';
+import { formatPrice } from './FormatPrice';
 interface IProductDetailLayoutProps {
     dataProduct: IProduct,
     dataMore: IProduct[],

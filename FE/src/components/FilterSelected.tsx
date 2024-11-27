@@ -3,7 +3,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import { IPendingFilter, RootState } from './type';
-import { formatPrice } from './formatPrice';
+import { formatPrice } from './FormatPrice';
 
 interface IFilterSelectedProps {
     handleValue: (key: string, value: string | number) => void;

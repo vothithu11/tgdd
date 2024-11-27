@@ -10,7 +10,7 @@ import AddressModal from '@/components/AddressModal';
 import { FieldValues, useForm } from 'react-hook-form';
 import { createOrder } from '@/api';
 import toast, { Toaster } from 'react-hot-toast';
-import { formatPrice } from '../../components/formatPrice';
+import { formatPrice } from '../../components/FormatPrice';
 
 const CartPage = () => {
     const { value, products } = useSelector((state: RootState) => state.counter);

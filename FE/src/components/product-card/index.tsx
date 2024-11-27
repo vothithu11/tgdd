@@ -6,7 +6,7 @@ import { IProduct } from '../type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { formatPrice } from '../formatPrice';
+import { formatPrice } from '../FormatPrice';
 
 // interface IProductCardProps {
 //     product: IProductItem;
