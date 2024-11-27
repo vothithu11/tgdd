@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { fetchPhone } from '@/api';
 import { IProduct, ISearchParams } from '@/components/type';
 import ProductsLayout from '@/components/ProductsLayout';
@@ -9,10 +10,10 @@ interface IPhonePage {
 
 const PhonePage = async ({ searchParams }:IPhonePage) => {
     const products:IProduct[] = await fetchPhone({
-        brand: [].concat(searchParams.brand),
-        ram: [].concat(searchParams.ram),
-        storage:[].concat(searchParams.storage),
-        type:[].concat(searchParams.type),
+        brand: [searchParams.brand].flat(),
+        ram: [searchParams.ram].flat(),
+        storage: [searchParams.storage].flat(),
+        type: [searchParams.type].flat(),
         salePrice: searchParams.salePrice,
         sort:  searchParams.sort,
     });

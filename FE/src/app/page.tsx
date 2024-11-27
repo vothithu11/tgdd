@@ -1,4 +1,4 @@
-import { fetchLaptopProducts, fetchPhoneProducts } from '@/api';
+import { fetchPhoneProducts } from '@/api';
 import Image from 'next/image';
 import Link from 'next/link';
 import BannerSlider from '@/components/BannerSlider';
@@ -8,7 +8,7 @@ import { popularSearch } from '@/components/data.mocks';
 import NewsFeed from '@/components/NewsFeed';
 
 async function Home() {
-    const dataPhone = await fetchPhoneProducts({});
+    const dataPhone = await fetchPhoneProducts();
 
     return (
         <main className="bg-[#f2f4f7]">

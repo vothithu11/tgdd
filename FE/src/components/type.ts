@@ -30,15 +30,14 @@ export interface IProduct {
     quantity?:number,
 }  
 export interface ISearchParams {
-  brand: string[] | string ,
-  ram: string[] | string,
-  storage: string[] | string,
-  charger: string[] | string,
-  type: string[] | string,
-  sort: string,
-  salePrice: string,
-  salePrice_gte: string,
-  demand?:string[] | string,
+  brand: string[] ,
+  ram: string[],
+  storage: string[],
+  charger: string[],
+  type: string[],
+  sort: [],
+  salePrice: number[],
+  demand:string[],
 }
 export interface IPendingFilter {
     [key:string]: string[]|number[];
@@ -60,15 +59,24 @@ export interface RootState {
         name:string | null,
     }
 }
-// export interface IOrderProduct{
-//     name:string,
-//     quantity:number,
-//     salePrice:number,
-// }
-// export interface IOrder{
-//     name:string,
-//     products:IOrderProduct[],
-//     totalPrice:number,
-//     phoneNumber:string,
-//     address:string,
-// }
+export interface IOrder {
+    products: {
+        title: string;
+        quantity: number | undefined;
+        salePrice: number;
+    }[];
+    address: string | null;
+    totalPrice: number;
+}
+export interface IFilterItem{
+    name: string, value: string, image?: string | boolean; 
+}
+export interface IFilterItemPopular extends IFilterItem{
+    queryName: string,
+}
+export interface IFilterData{
+    items?: IFilterItem[];
+    placeholder: string;
+    queryName: string;
+}
+

@@ -7,11 +7,15 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { clickButton, clickPopup, clickSort, submit, cancel } from '@/components/slice/filterSlice';
 import FilterSelected from './FilterSelected';
-import { IPendingFilter, RootState } from './type';
+import { IFilterData, IFilterItemPopular, IPendingFilter, RootState } from './type';
 import Image from 'next/image';
 import PriceRange from './PriceRange';
+interface IFilterProps{
+    filterData:IFilterData[];
+    filterDataPopular:IFilterItemPopular[];
+}
 
-function Filter({ filterData, filterDataPopular }) {
+function Filter({ filterData, filterDataPopular }:IFilterProps) {
     const [showResults, setShowResults] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
     const router = useRouter();
@@ -95,7 +99,7 @@ function Filter({ filterData, filterDataPopular }) {
                                 </div>
                             )}
                             <div className="flex gap-5 flex-wrap items-center justify-between">
-                                {filterData.map((filter, i) => (
+                                {filterData.map((filter:IFilterData, i) => (
                                     <div key={i} className="flex flex-col ">
                                         <div className="font-bold">{filter.placeholder}</div>
                                         <div className="mt-2.5">{filter.queryName === 'price' && <PriceRange />}</div>
@@ -140,7 +144,7 @@ function Filter({ filterData, filterDataPopular }) {
                     </div>
                 )}
                 {isEmpty &&
-                    filterDataPopular.map((item, i) => (
+                    filterDataPopular.map((item:IFilterItemPopular, i:number) => (
                         <button
                             className="w-max border border-none py-1.5 px-3 rounded-lg bg-[#f2f4f7] hover:border-[#288AD6]"
                             key={i}

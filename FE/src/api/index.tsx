@@ -1,30 +1,26 @@
-interface SearchParams {
+import { IOrder } from "@/components/type";
+
+interface ISearchParams {
     category?: string;
-    brand?: string;
-    ram?: number;
-    type?: string;
-    screen?: number;
-    storage?: number;
-    charger?: number;
-    price?: number;
-    pricerange?: number;
-    page?: number;
-    limit?: number;
+    brand?: string[];
+    ram?: string[];
+    type?: string[];
+    storage?: string[];
+    sort?: [];
+    salePrice?: number[];
     keyword?: string;
+    demand?:string[];
 }
 
 interface FetchProductsProps {
-    searchParams?: SearchParams;
+    searchParams?: ISearchParams;
 }
 
-interface FetchProductDetailProps {
-    _id: string;
-}
 export const fetchProducts = async (props: FetchProductsProps) => {
     try {
         const { keyword = '' } = props?.searchParams || {};
 
-        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts?keyword=${keyword}`, { cache: 'no-store' });
+        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts?keyword=${keyword}`, {  next: { revalidate: 30 } });
         if (!res.ok) {
             throw new Error('Failed to fetch products');
         }
@@ -36,7 +32,7 @@ export const fetchProducts = async (props: FetchProductsProps) => {
     }
 };
 
-export const fetchPhone = async (filters) => {
+export const fetchPhone = async (filters:ISearchParams) => {
     const { category = 'phone', brand = [], type = [], ram = [],storage = [], salePrice = [0,50000000], sort} = filters;
  
     const brandQuery = brand.length >0 ? `&brand=${brand.join('&brand=')}` : '';
@@ -49,7 +45,7 @@ export const fetchPhone = async (filters) => {
    console.log('url',url)
     try {
         const res = await fetch(url, {
-            cache: 'no-store',
+            next: { revalidate: 10 }
         });
         if (!res.ok) throw new Error('Failed to fetch data');
         const data = await res.json();
@@ -59,7 +55,7 @@ export const fetchPhone = async (filters) => {
         console.error(error);
     }
 };
-export const fetchLaptop = async (filters) => {
+export const fetchLaptop = async (filters:ISearchParams) => {
     const { category = 'laptop', brand = [], ram = [],storage = [],demand=[], salePrice = [0,50000000], sort } = filters;
  
     const brandQuery = brand.length >0 ? `&brand=${brand.join('&brand=')}` : '';
@@ -71,7 +67,7 @@ export const fetchLaptop = async (filters) => {
 
     try {
         const res = await fetch(url, {
-            cache: 'no-store',
+            next: { revalidate: 10 }
         });
         if (!res.ok) throw new Error('Failed to fetch data');
         const data = await res.json();
@@ -82,7 +78,7 @@ export const fetchLaptop = async (filters) => {
 };
 export const fetchPhoneProducts = async () => {
     try {
-        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts?category=phone`, { cache: 'no-store' });
+        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts?category=phone`, {next: { revalidate: 10 } });
         if (!res.ok) {
             throw new Error('Failed to fetch products');
         }
@@ -95,7 +91,7 @@ export const fetchPhoneProducts = async () => {
 };
 export const fetchLaptopProducts = async () => {
     try {
-        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts?category=laptop`, { cache: 'no-store' });
+        const res = await fetch(`${process.env.NEXT_DOMAIN_URL}/posts?category=laptop`, { next: { revalidate: 10 }});
         if (!res.ok) {
             throw new Error('Failed to fetch products');
         }
@@ -121,8 +117,7 @@ export const fetchProductDetail = async (_id: string) => {
     }
 };
 
-export const createOrder = async(orders)=>{
-    console.log(orders,'hgdfd')
+export const createOrder = async(orders:IOrder)=>{
     try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/orders`, {
             method: 'POST',

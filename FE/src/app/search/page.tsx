@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { fetchProducts } from '@/api';
 import ProductCard from '@/components/product-card';
 import { IProduct } from '@/components/type';
