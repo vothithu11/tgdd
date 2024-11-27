@@ -1,5 +1,4 @@
 'use client'
-import { formatPrice } from '@/components/formatPrice';
 import { clickPrice } from '@/components/slice/filterSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
