@@ -1,4 +1,4 @@
-import PostProduct from '../models/postProduct.js';
+import Product from '../models/product.js';
 
 // export const getPosts = async (req, res) => {
 //     const { brand, ram, type, screen, storage, charger, isPromotion, price, keyword, category, demand, pricerange} = req.query;
@@ -81,7 +81,7 @@ import PostProduct from '../models/postProduct.js';
 //         res.status(404).json({ message: error.message });
 //     }
 // }
-export const getPosts = async (req, res) => {
+export const getProducts = async (req, res) => {
     try {
     const queryObj = {...req.query};
    
@@ -100,12 +100,21 @@ export const getPosts = async (req, res) => {
     });
   
 
-    let query = PostProduct.find(validQueryObj);
+    let query = Product.find(validQueryObj);
     //sort
     if (req.query.sort) {
         const sortBy = req.query.sort.split(',').join(' ');
        query = query.sort(sortBy);
       } 
+
+    //pagination
+    // if (req.query.page && req.query.limit) {
+    //     const page = req.query.page * 1 || 1;
+    //     const limit = req.query.limit * 1 ||100;
+    //     const skip = (page - 1) * limit;
+    
+    //     query = query.skip(skip).limit(limit);
+    //   } 
       if (req.query.keyword) {
         const regex = new RegExp(req.query.keyword, 'i');
         query = query.find({
@@ -120,49 +129,49 @@ export const getPosts = async (req, res) => {
         });
     }
 
-        const postProducts = await query;
-        res.status(200).json(postProducts);
+        const Products = await query;
+        res.status(200).json(Products);
     } catch (error) {
-        console.error('Error fetching posts:', error.message); 
+        console.error('Error fetching products:', error.message); 
         res.status(404).json({ message: error.message });
     }
 }
 
-export const getIdPost = async (req, res) => {
+export const getIdProduct = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const postDetailProduct = await PostProduct.findById(id);
+        const detailProduct = await Product.findById(id);
 
-        if (!postDetailProduct) {
+        if (!detailProduct) {
             return res.status(404).json({ message: 'Product not found' });
         }
 
-        res.status(200).json(postDetailProduct);
+        res.status(200).json(detailProduct);
     } catch (error) {
-        console.error('Error fetching post by ID:', error.message);
+        console.error('Error fetching product by ID:', error.message);
         res.status(404).json({ message: 'Invalid ObjectId' });
     }
 }
-export const createPost = async (req, res) => {
+export const createProduct = async (req, res) => {
     const body = req.body;
-    const newPost = new PostProduct(body);
+    const newProduct = new Product(body);
 
     try {
-        await newPost.save();
-        res.status(201).json(newPost);
+        await newProduct.save();
+        res.status(201).json(newProduct);
     } catch (error) {
-        console.error('Error creating post:', error.message);
-        res.status(400).json({ message: 'Error creating post' });
+        console.error('Error creating product:', error.message);
+        res.status(400).json({ message: 'Error creating product' });
     }
 }
 
-export const updatePost = async (req, res) => {
+export const updateProduct = async (req, res) => {
     const { id } = req.params;
     const updateData = req.body;
   
     try {
-      const updatedProduct = await PostProduct.findByIdAndUpdate(id, updateData, { new: true });
+      const updatedProduct = await Product.findByIdAndUpdate(id, updateData, { new: true });
   
       if (!updatedProduct) {
         return res.status(404).json({ message: 'Product not found' });
@@ -170,16 +179,16 @@ export const updatePost = async (req, res) => {
   
       res.status(200).json(updatedProduct);
     } catch (error) {
-      console.error('Error updating post:', error.message);
-      res.status(400).json({ message: 'Error updating post' });
+      console.error('Error updating product:', error.message);
+      res.status(400).json({ message: 'Error updating product' });
     }
   }
 
-  export const deletePost = async (req, res) => {
+  export const deleteProduct = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const deletedProduct = await PostProduct.findByIdAndDelete(id);
+        const deletedProduct = await Product.findByIdAndDelete(id);
 
         if (!deletedProduct) {
             return res.status(404).json({ message: 'Product not found' });
@@ -187,8 +196,8 @@ export const updatePost = async (req, res) => {
 
         res.status(200).json({ message: 'Product deleted successfully' });
     } catch (error) {
-        console.error('Error deleting post:', error.message);
-        res.status(400).json({ message: 'Error deleting post' });
+        console.error('Error deleting product:', error.message);
+        res.status(400).json({ message: 'Error deleting product' });
     }
 }
 

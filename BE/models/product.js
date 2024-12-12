@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
     ram: Number,
     battery: Number,
     camera: Number,
@@ -30,6 +30,6 @@ const postSchema = mongoose.Schema({
 
 
 
-const PostProduct = mongoose.model('PostProduct', postSchema);
-export default PostProduct;
+const Product = mongoose.model('product', productSchema);
+export default Product;
 
