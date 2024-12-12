@@ -57,8 +57,9 @@ const filterSlice = createSlice({
             state.filter = { ...initialState.filter };
             state.pendingFilter = { ...initialState.pendingFilter };
             state.filterSort = {...initialState.filterSort}
+            state.page = null;
         }
     }
 });
-export const {clickButton, clickPopup,clickSort, clickPrice, submit, cancel} = filterSlice.actions;
+export const {clickButton, clickPopup,clickSort, clickPrice,clickPagination, submit, cancel} = filterSlice.actions;
 export default filterSlice.reducer;

@@ -26,7 +26,7 @@ export const menuBar = [
         id: 3,
         icon: faTabletScreenButton,
         completed: false,
-        link: '/',
+        link: '/tablet',
     },
     {
         title: 'Phụ kiện',

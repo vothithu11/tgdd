@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import querystring from 'querystring';
 
-function SearchBar() {
+function SearchBar({className}:{className?:string}) {
   const [keyword, setKeyword] = useState('');
 
   const router = useRouter();
@@ -22,9 +22,9 @@ function SearchBar() {
       setKeyword('');
   };
   return (
-    <form className='h-10 w-[415px] bg-white rounded-[32px] flex items-center space-x-[1px]' onSubmit={handleSubmit}>
+    <form className= { `h-[40px] w-[415px] bg-white rounded-[32px] flex items-center max-lg:flex-1 max-lg:rounded-none ${className}`} onSubmit={handleSubmit}>
         <FontAwesomeIcon icon={faMagnifyingGlass} className='ml-3 text-gray-400 w-[17px] h-[17px]' />
-        <input value={keyword} type="text" placeholder='Bạn tìm gì...' className='bg-transparent flex-1 h-full border-none outline-none pr-6 pl-2 leading-[14px]' onChange={(e)=>setKeyword(e.target.value)}/>
+        <input value={keyword} type="text" placeholder='Bạn tìm gì...' className='bg-transparent flex-1 h-full border-none outline-none p-2 leading-[14px]' onChange={(e)=>setKeyword(e.target.value)}/>
     </form>
   )
 }

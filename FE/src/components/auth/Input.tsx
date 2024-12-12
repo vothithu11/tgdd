@@ -22,7 +22,7 @@ const Input = (props: IInputProps) => {
                     name={name}
                     placeholder={placeholder}
                     value={value}
-                    className="cursor-pointer w-full p-2.5 rounded-lg border border-orange-300 outline-none"
+                    className="cursor-pointer w-full p-2.5 rounded-lg border border-[#288AD6] outline-none"
                     onChange={handleChange}
                 />
                 {(name === 'password' || name === 'confirmPassword') && (

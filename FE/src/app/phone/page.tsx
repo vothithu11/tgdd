@@ -7,7 +7,10 @@ import Filter from '@/components/Filter';
 interface IPhonePage {
     searchParams: ISearchParams
 }
-
+export const metadata= {
+    title: 'Điện thoại, Smartphone chính hãng giá rẻ, mua trả chậm 0% lãi suất',
+    description: 'Điện thoại, Smartphone chính hãng giá rẻ, mua trả chậm 0% lãi suất',
+};
 const PhonePage = async ({ searchParams }:IPhonePage) => {
     const products:IProduct[] = await fetchPhone({
         brand: [searchParams.brand].flat(),
@@ -16,10 +19,11 @@ const PhonePage = async ({ searchParams }:IPhonePage) => {
         type: [searchParams.type].flat(),
         salePrice: searchParams.salePrice,
         sort:  searchParams.sort,
+        page:searchParams.page,
     });
-    console.log(searchParams,'searchparams')
+   
     return (
-       <ProductsLayout quantity={products?.length} title='Điện thoại' products={products}><Filter filterData={filterDataMobile} filterDataPopular={filterDataMobilePopular}/></ProductsLayout>
+        <ProductsLayout quantity={products?.length} title='Điện thoại' products={products}><Filter filterData={filterDataMobile} filterDataPopular={filterDataMobilePopular}/></ProductsLayout>
     );
 };
 

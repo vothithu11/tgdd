@@ -13,11 +13,13 @@ const config: Config = {
             backgroundImage: {
                 'custom-gradient': 'linear-gradient(to bottom, rgb(255, 146, 12), rgb(247, 107, 28))',
                 'custom-gradient-btn': 'linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(255, 255, 255))',
-                
               },
         },
       
     },
-    plugins: [],
+    plugins: [
+        require('@tailwindcss/line-clamp'),
+        require('tailwind-scrollbar')({ nocompatible: true }),
+    ],
 };
 export default config;

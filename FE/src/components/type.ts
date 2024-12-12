@@ -38,6 +38,8 @@ export interface ISearchParams {
   sort: [],
   salePrice: number[],
   demand:string[],
+  screen:string[],
+  page:number,
 }
 export interface IPendingFilter {
     [key:string]: string[]|number[];
@@ -60,16 +62,18 @@ export interface RootState {
     }
 }
 export interface IOrder {
-    _id?:string;
-    date?:string;
-    products: {
-        title: string;
-        quantity: number | undefined;
-        salePrice: number;
-    }[];
-    name:string;
-    address: string | null;
-    totalPrice: number;
+    name: string;
+    phoneNumber: string;
+    products: { id: string; quantity: number }[];
+    address: string;
+}
+export interface IOrderFull {
+    _id: string;
+    date:string;
+    name: string;
+    phoneNumber: string;
+    products: { id: string; quantity: number, title:string, salePrice:number }[];
+    address: string;
 }
 export interface IFilterItem{
     name: string, value: string, image?: string | boolean; 

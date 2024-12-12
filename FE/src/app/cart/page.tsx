@@ -1,17 +1,16 @@
 'use client';
-import { useSelector } from 'react-redux';
+import { createOrder } from '@/api';
+import AddressModal from '@/components/AddressModal';
+import { formatSalePrice } from '@/components/formatSalePrice';
 import ProductCounter from '@/components/slice/ProductCounter';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { RootState } from '@/components/type';
 import { faChevronDown, faChevronLeft, faPercent } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import Link from 'next/link';
-import { RootState } from '@/components/type';
-import AddressModal from '@/components/AddressModal';
 import { FieldValues, useForm } from 'react-hook-form';
-import { createOrder } from '@/api';
 import toast, { Toaster } from 'react-hot-toast';
-import { formatSalePrice } from '@/components/formatSalePrice';
-
+import { useSelector } from 'react-redux';
 
 const CartPage = () => {
     const { value, products } = useSelector((state: RootState) => state.counter);
@@ -24,17 +23,16 @@ const CartPage = () => {
     const {register,handleSubmit, reset, formState: { errors, isSubmitted } ,}=useForm();
     const onSubmit =(data: FieldValues)=>{
         if ( place?.trim() === ''){return (toast.error('Vui lòng chọn địa chỉ giao hàng'))};
-       const orders =({...data, products: products.map((product) => ({ title:product.title, quantity:product.quantity,salePrice:product.salePrice })),address:place,totalPrice:totalCost})
+       const orders =({...data, products: products.map((product) => ({ id:product._id, quantity:product.quantity })),address:place})
        createOrder(orders);
-       toast.success('Tạo sản phẩm mới thành công!');
+       toast.success('Tạo đơn hàng thành công!');
        reset();
       
     }
     return (
-        <main className="bg-[#f2f4f7] pb-5 ">
-         
+        <main className="bg-[#f2f4f7] pb-5 max-md:px-2.5">
             {products.length === 0 && (
-                <div className="w-[600px] mx-auto py-16 text-[#98a2b3]">
+                <div className="w-[600px] mx-auto py-16 text-[#98a2b3] max-md:w-full">
                     <Image
                         src="/empty-cart.png"
                         alt="img"
@@ -59,14 +57,14 @@ const CartPage = () => {
                 </div>
             )}
             {products.length > 0 && (
-                <div className="w-[600px] mx-auto">
+                <div className="max-w-[600px] mx-auto">
                     <div className="flex items-center py-3 w-full h-12">
                         <div className="flex-1 flex justify-start">
                             <FontAwesomeIcon icon={faChevronLeft} className="w-5 h-5" />
                         </div>
                         <span className="flex-1 font-bold leading-6">Giỏ hàng</span>
                     </div>
-                    <div className=" bg-white w-[600px] mx-auto text-[#344054]">
+                    <div className=" bg-white w-full mx-auto text-[#344054]">
                         <div className="border-b-2 px-7 pt-8 pb-3.5 flex flex-col gap-0.5">
                             {products.length > 0 &&
                                 products.map((product) => (
@@ -111,7 +109,7 @@ const CartPage = () => {
                                     <span>Chị</span>
                                 </label>
                             </div>
-                            <div className="flex justify-start space-x-2.5">
+                            <div className="flex justify-start gap-2.5 max-sm:flex-col">
                                 <input
                                 {...register('name',  {required: true})}
                                     type="text"
@@ -193,17 +191,13 @@ const CartPage = () => {
                             <span className="text-gray-400 flex justify-center pb-8">
                                 Bạn có thể chọn hình thức thanh toán sau khi đặt hàng
                             </span>
-                            
                         </div>
                         </form>
                         <Toaster  position="top-center"/>
-                    </div>
-                    
+                    </div> 
                 </div>
-                
             )}
         </main>
     );
 };
-
 export default CartPage;

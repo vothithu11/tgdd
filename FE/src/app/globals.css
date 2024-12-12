@@ -41,7 +41,13 @@ body {
     .text-blue-custom {
         @apply text-[#288AD6];
     }
-      
+    .scoll{
+      @apply scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-white h-[65px]  overflow-y-hidden overflow-x-scroll
+    }
+    .custom-slide-class {
+      left: 10px !important;
+      right: -10px !important;
+  }
    
 }   
 

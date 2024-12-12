@@ -7,7 +7,10 @@ import { filterDataLaptop, filterDataLaptopPopular } from '@/components/data.moc
 interface ILaptopPage {
     searchParams: ISearchParams;
 }
-
+export const metadata= {
+    title: 'Laptop | Máy tính xách tay giá rẻ, trả góp 0%',
+    description: 'Laptop | Máy tính xách tay giá rẻ, trả góp 0%',
+};
 const LaptopPage = async ({ searchParams }: ILaptopPage) => {
     const products: IProduct[] = await fetchLaptop({
         brand: [searchParams.brand].flat(),

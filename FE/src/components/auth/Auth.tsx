@@ -25,13 +25,13 @@ const Auth = ({ formData, handleChange, handleSubmit, isSignup, switchMode }:IAu
     const handleShowPassword = () => setShowPassword((prev) => !prev);
 
     return (
-        <div className='bg-[#f2f4f7'>
-        <div className="text-md font-medium text-gray-900 space-y-4 shadow-lg bg-[#F1F1F1] py-4 w-[520px] rounded-xl mx-auto my-10">
+        <div className='max-md:mx-2.5'>
+        <div className="text-md font-medium text-gray-900 space-y-3 shadow-lg bg-[#F1F1F1] py-4 max-w-[520px] rounded-xl mx-auto my-10">
             <div className="mt-6 flex gap-2.5 justify-center items-center text-white mx-auto py-1 px-2.5 rounded-lg bg-[#288AD6] w-max">
                 <FontAwesomeIcon icon={faLock} />
                 <button className="">{isSignup ? 'SIGN-UP' : 'SIGN-IN'}</button>
             </div>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5 p-5 ">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 p-5">
                 {isSignup && (
                     <>
                         <Input

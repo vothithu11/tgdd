@@ -1,5 +1,5 @@
 'use client';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { SwiperClass, Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/grid';
@@ -10,11 +10,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ProductCard from './product-card';
 import { IProduct } from './type';
+import { useRef } from 'react';
 const SlidePrevBtn = () => {
-    const swiper = useSwiper();
+    
     return (
         <button
-            onClick={() => swiper.slidePrev()}
+         
             className="bg-[#f9fafbb9] w-11 h-11 rounded-full text-gray shadow-lg shadow-[#66666673]"
         >
             <FontAwesomeIcon icon={faChevronLeft} />
@@ -22,10 +23,10 @@ const SlidePrevBtn = () => {
     );
 };
 const SlideNextBtn = () => {
-    const swiper = useSwiper();
+    
     return (
         <button
-            onClick={() => swiper.slideNext()}
+         
             className="bg-[#f9fafbb9] w-11 h-11 rounded-full text-gray shadow-lg shadow-[#66666673]"
         >
             <FontAwesomeIcon icon={faChevronRight} />
@@ -34,37 +35,57 @@ const SlideNextBtn = () => {
 };
 export default function BannerSliderProducts({
     data,
-    slidesPerView = 5,
+    slidesPerView = 6,
     row = 2,
+    extraPromotionStyles
 }: {
     data: IProduct[];
     slidesPerView?: number;
     row?: number;
+    extraPromotionStyles?:boolean,
 }) {
+    const swiperRef = useRef<SwiperClass | null>();;
     return (
-        <>
+        <div className='relative px-5'>
             <Swiper
-                slidesPerView={slidesPerView}
+            onSwiper={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+                slidesPerView={2}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                      },
+                      768: {
+                        slidesPerView: 3,
+                        spaceBetween: 10,
+                      },
+                      1024: {
+                        slidesPerView: slidesPerView,
+                        spaceBetween: 10,
+                      },
+                }}
                 grid={{
                     fill: 'row',
                     rows: row,
                 }}
                 spaceBetween={10}
                 modules={[Grid]}
-                className="h-max"
+                className=""
             >
                 {data?.map((item) => (
-                    <SwiperSlide className="relative z-1" key={item._id}>
-                        <ProductCard product={item} />
+                    <SwiperSlide className="" key={item._id}>
+                        <ProductCard product={item} extraPromotionStyles={extraPromotionStyles} extraClassStyles={`${!extraPromotionStyles?'w-[155px] h-[155px]':'w-[155px] h-[172px]'} max-sm:w-[130px]`}/>
                     </SwiperSlide>
                 ))}
-                <div className="absolute top-1/2 -translate-y-1/2 left-0 z-10">
+            </Swiper>
+                <div className="absolute top-1/2 -translate-y-1/2 left-1 z-10" onClick={() => swiperRef.current?.slidePrev()}>
                     <SlidePrevBtn />
                 </div>
-                <div className="absolute top-1/2 -translate-y-1/2 right-0 z-10">
+                <div className="absolute top-1/2 -translate-y-1/2 right-1 z-10 "onClick={() => swiperRef.current?.slideNext()}>
                     <SlideNextBtn />
                 </div>
-            </Swiper>
-        </>
+            </div>
     );
 }

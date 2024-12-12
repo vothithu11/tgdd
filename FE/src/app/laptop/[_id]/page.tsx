@@ -8,7 +8,7 @@ const LaptopDetail = async ({params}: { params: { _id: string } } ) => {
     const dataMore: IProduct[]= await fetchPhoneProducts();
 
     return (
-        <ProductDetailLayout dataProduct={dataProduct} dataMore={dataMore} label='Laptop' />
+            <ProductDetailLayout dataProduct={dataProduct} dataMore={dataMore} label='Laptop' />
     );
 };
 

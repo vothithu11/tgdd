@@ -20,7 +20,7 @@ function InfoReview({product}:{product:IProduct}) {
                 nhiệm {product.title}.{!showMore && <span className='text-blue-custom flex gap-1 w-full justify-center items-center mx-auto bg-custom-gradient-btn absolute -bottom-2 h-20 pt-16 cursor-pointer' onClick={()=>setShowMore(true)}><span>Xem thêm</span>  <FontAwesomeIcon icon={faAngleDown} /></span>}
             </p>
             {showMore && <>
-                <div className='relative w-[720px] h-[405px]'>
+                <div className='relative w-full h-[46vh]'>
             <Image
                 alt="image"
                 src={product.main_image}
@@ -50,14 +50,30 @@ function InfoReview({product}:{product:IProduct}) {
                 giới thiệu dòng mới, mang lại những cải tiến đáng kể trong hiệu suất xử lý cũng như tính năng. Sản phẩm tiếp tục phát triển với công nghệ chip mới nhất và các tính năng camera tiên tiến, giúp tăng cường
                 trải nghiệm người dùng.
             </p>
-            <Image
+            {product.category === 'phone' && <Image
                 src="https://cdn.tgdd.vn/Products/Images/42/303891/iphone-15-plus-300923-115613.jpg"
                 alt="image"
                 width={720}
                 height={405}
                 quality={100}
                 className="object-cover"
-            />
+            /> } 
+            {product.category === 'laptop' && <Image
+                src="https://cdn.tgdd.vn/Products/Images/44/323920/Kit/hp-15-fd0234tu-i5-9q969pa-note.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
+            {product.category === 'tablet' && <Image
+                src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/522/322132/samsung-galaxy-tab-s10-ultra-game-638641583243816906.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
 
             <h1 className="font-bold text-xl">Cụm camera không ngừng cải tiến</h1>
             <p >
@@ -66,14 +82,31 @@ function InfoReview({product}:{product:IProduct}) {
                 thuật toán xử lý, khi chụp những bức ảnh thiếu sáng bạn sẽ nhận được kết quả ấn tượng với màu sắc, độ
                 chi tiết rõ nét đáng kinh ngạc.
             </p>
-            <Image
+            {product.category === 'phone' && <Image
                 src="https://cdn.tgdd.vn/Products/Images/42/320722/samsung-galaxy-z-flip6-14.jpg"
                 alt="image"
                 width={720}
                 height={405}
                 quality={100}
                 className="object-cover"
-            />
+            /> } 
+            {product.category === 'laptop' && <Image
+                src="https://cdn.tgdd.vn/Products/Images/44/282827/apple-macbook-air-m2-2022-161122-112236.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
+            {product.category === 'tablet' && <Image
+                src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/522/322132/samsung-galaxy-tab-s10-ultra-khoanh-tron-638641585868693914.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
+            
             <p>
                 Bạn có thể khám phá thêm những tính năng của camera trên {product.title} như chế độ smart HDR 3 giúp cân bằng
                 yếu tố ánh sáng trong ảnh, làm nổi bật chi tiết đối tượng và cây cối trong khi vẫn giữ được màu sắc
@@ -97,26 +130,59 @@ function InfoReview({product}:{product:IProduct}) {
                 Về ngoại hình {product.title} có thiết kế hoài niệm với phần cạnh được làm vuông vức tương tự trên mẫu 
                 thay vì bo cong như {product.title}.
             </p>
-            <Image
+            {product.category === 'phone' &&  <Image
                 src="https://cdn.tgdd.vn/Products/Images/42/250258/iphone-13-256gb-19.jpg"
                 alt="image"
                 width={720}
                 height={405}
                 quality={100}
                 className="object-cover"
-            />
+            /> } 
+            {product.category === 'laptop' && <Image
+                src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/331570/macbook-pro-14-inch-m4-pro-48gb-512gb-asc-8-638684925492827064.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
+            {product.category === 'tablet' && <Image
+                src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/522/322132/samsung-galaxy-tab-s10-ultra-phac-thao-638641585880164072.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
+           
             <p className='capitalize'>
                 {product.brand} còn mang đến cho người dùng một loạt gam màu cá tính, độc đáo của mình để
                 người dùng có sự lựa chọn phù hợp với những phong cách khác nhau.
             </p>
-            <Image
+            {product.category === 'phone' &&  <Image
                 src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-18.jpg"
                 alt="image"
                 width={720}
                 height={405}
                 quality={100}
                 className="object-cover"
-            />
+            /> } 
+            {product.category === 'laptop' && <Image
+                src="https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/331570/macbook-pro-14-inch-m4-pro-48gb-512gb-asc-15-638684925602059638.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> } 
+            {product.category === 'tablet' && <Image
+                src="https://cdn.tgdd.vn/Products/Images/522/325501/ipad-air-m2-11-inch-wifi-128gb-man-hinh.jpg"
+                alt="image"
+                width={720}
+                height={405}
+                quality={100}
+                className="object-cover"
+            /> }
             <p>
                 Máy được chế tác có độ hoàn thiện cực cao với thiết kế nguyên khối, khung nhôm và mặt sau là kính cường
                 lực cao cấp toát lên vẻ ngoài sang chảnh cũng như mang lại độ hiệu quả an toàn cao mỗi khi sử dụng.

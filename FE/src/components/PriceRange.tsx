@@ -35,7 +35,16 @@ const PriceRange = () => {
       <Slider
         className="h-2 rounded-md cursor-pointer mt-2.5"
         thumbClassName="h-4 w-4 -mt-1 bg-blue-500 rounded-full shadow-md focus:outline-none"
-        trackClassName="bg-blue-400 h-2 rounded-md" 
+        renderTrack={(props, state) => {
+          const { index } = state; 
+          const trackClass =
+            index === 0
+              ? 'h-2 bg-gray-300 rounded-l-md' 
+              : index === 1
+              ? 'h-2 bg-blue-500' 
+              : 'h-2 bg-gray-300 rounded-r-md'; 
+          return <div {...props} className={`${props.className} ${trackClass}`} />;
+        }}
         value={values}
         onChange={handleChange}
         onAfterChange={handleAfterChange}

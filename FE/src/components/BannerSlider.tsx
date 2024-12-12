@@ -7,9 +7,9 @@ import 'swiper/css/pagination';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-interface IBannerSliderProps{
-    images: string[],
-    visibleNumber: Number,
+interface IBannerSliderProps {
+    images: string[];
+    visibleNumber: Number;
 }
 const SlidePrevBtn = () => {
     const swiper = useSwiper();
@@ -34,9 +34,20 @@ const SlideNextBtn = () => {
     );
 };
 
-const BannerSlider = ({ images, visibleNumber }:IBannerSliderProps) => {
+const BannerSlider = ({ images, visibleNumber }: IBannerSliderProps) => {
     return (
-        <Swiper spaceBetween={8} slidesPerView={2} className="w-full h-full relative">
+        <Swiper
+            spaceBetween={8}
+            slidesPerView={1}
+            loop={true} 
+            breakpoints={{
+                1024: {
+                    slidesPerView: 2,
+                    spaceBetween: 8,
+                },
+            }}
+            className="w-full h-full relative"
+        >
             {images.map((image, index) => (
                 <SwiperSlide key={index}>
                     <Image

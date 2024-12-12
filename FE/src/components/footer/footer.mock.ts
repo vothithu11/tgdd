@@ -10,3 +10,4 @@ export const footerData = [
     'Tìm siêu thị (3.043 shop)',
     'Tổng đài hỗ trợ',
 ];
+export const brands =['/topZone.png','/dienmayxanh.png','/bachhoaxanh.png','/nhathuoc.png','/avakids.png','/vieclam.png','/era.png']

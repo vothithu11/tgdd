@@ -42,7 +42,6 @@ function AddressForm({ onClose }:{onClose:()=>void}) {
                     }
                     const data = await response.json();
                     setSelectedPlace(data.data);
-                    console.log('datadsdfjdg',data.data)
                 }
             } catch (error) {
                 console.error('Lỗi khi lấy dữ liệu:', error);
@@ -62,15 +61,15 @@ function AddressForm({ onClose }:{onClose:()=>void}) {
     return (
         <div className="fixed z-10 inset-0 bg-black bg-opacity-10 backdrop-blur-sm flex items-center justify-center">
             <div className="w-[480px] h-[488px] bg-white rounded-lg">
-                <div className="h-16 bg-[#288AD6] px-2 flex justify-between items-center rounded-lg">
+                <div className="h-16 bg-[#288AD6] px-5 flex justify-between items-center rounded-lg">
                     <span className="cursor-pointer" onClick={handleBack}>
-                        <FontAwesomeIcon icon={faChevronLeft} />
+                        <FontAwesomeIcon icon={faChevronLeft} className='text-white' />
                     </span>
-                    <h2 className="truncate max-w-[370px] font-semibold text-base ">
+                    <h2 className="truncate max-w-[370px] font-semibold text-base text-white">
                         Địa chỉ giao hàng: {selectedPlaceNames}
                     </h2>
                     <button
-                        className="py-1.5 px-2 border-2 border-gray-100 rounded-md text-sm cursor-pointer bg-[#f6f7f8]"
+                        className="py-1.5 px-2 border border-blue-100 rounded-md text-sm cursor-pointer bg-[#4d99e5] text-white"
                         onClick={onClose}
                     >
                         <FontAwesomeIcon icon={faXmark} /> Đóng

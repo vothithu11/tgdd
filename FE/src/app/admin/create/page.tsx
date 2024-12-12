@@ -13,7 +13,7 @@ const AdminPage = () => {
    
       if (!formData) return; 
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/posts`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_DOMAIN_URL}/products`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

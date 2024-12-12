@@ -28,7 +28,7 @@ function InfoTech() {
                     </div>
                     {openTab.includes(index) &&
                         info.des.map((item, i) => (
-                            <p className="w-full p-2.5 flex gap-4 border-b border-[#f2f4f7]">
+                            <p key={i} className="w-full p-2.5 flex gap-4 border-b border-[#f2f4f7]">
                                 <span>{item[0]}</span>
                                 <span>{item[1]}</span>
                             </p>

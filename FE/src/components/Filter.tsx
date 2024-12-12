@@ -3,40 +3,40 @@ import { faAngleDown, faCheck, faFilter } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { dataSort } from './data.mocks';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { clickButton, clickPopup, clickSort, submit, cancel } from '@/components/slice/filterSlice';
 import FilterSelected from './FilterSelected';
-import { IFilterData, IFilterItemPopular, IPendingFilter, RootState } from './type';
+import { IFilterData, IFilterItemPopular, RootState } from './type';
 import Image from 'next/image';
 import PriceRange from './PriceRange';
-interface IFilterProps{
-    filterData:IFilterData[];
-    filterDataPopular:IFilterItemPopular[];
+import useUrlSearchParams from './useUrlSearchParams';
+interface IFilterProps {
+    filterData: IFilterData[];
+    filterDataPopular: IFilterItemPopular[];
 }
-
-function Filter({ filterData, filterDataPopular }:IFilterProps) {
+function Filter({ filterData, filterDataPopular }: IFilterProps) {
     const [showResults, setShowResults] = useState(false);
     const [showBtn, setShowBtn] = useState(false);
     const router = useRouter();
-    const searchParams = useSearchParams();
     const pathName = usePathname();
     const { filterSort, pendingFilter } = useSelector((state: RootState) => state.filter);
+    const updateUrlSearchParams = useUrlSearchParams(filterSort);
     const dispatch = useDispatch();
     const handleClick = (key: string, value: string | number) => {
         dispatch(clickPopup({ key, value }));
     };
     const handleOption = (key: string, value: string | number) => {
         dispatch(clickButton({ key, value }));
-        urlSearchParams(filterSort);
+        updateUrlSearchParams();
     };
     const handleSort = (key: string, value: string | number) => {
         dispatch(clickSort({ key, value }));
-        urlSearchParams(filterSort);
+        updateUrlSearchParams();
     };
     const handleSubmit = () => {
         dispatch(submit());
-        urlSearchParams(filterSort);
+        updateUrlSearchParams();
         setShowResults(false);
     };
     const handleCancel = () => {
@@ -45,33 +45,15 @@ function Filter({ filterData, filterDataPopular }:IFilterProps) {
         setShowResults(false);
     };
     const isEmpty = Object.values<string[] | number[]>(pendingFilter).every((item) => item.length === 0);
-    const urlSearchParams = (fil: IPendingFilter) => {
-        const params = new URLSearchParams(searchParams.toString());
-        Object.entries(fil).forEach(([param, values]) => {
-            values.forEach((value) => {
-                if (!params.getAll(param).includes(String(value))) {
-                    params.append(param, String(value));
-                }
-            });
-            const allValues = params.getAll(param);
-            allValues.forEach((value) => {
-                if (!values.map(String).includes(String(value))) {
-                    params.delete(param, String(value));
-                }
-            });
-        });
-        router.replace(`${pathName}?${params.toString()}`);
-    };
     useEffect(() => {
         dispatch(cancel());
     }, [pathName, dispatch]);
     useEffect(() => {
-        urlSearchParams(filterSort);
+        updateUrlSearchParams();
     }, [filterSort]);
-    console.log(pendingFilter, 'pendingFiter');
     return (
         <div>
-            <div className={'flex gap-2 leading-3 relative'}>
+            <div className='flex flex-wrap gap-2 leading-3 relative max-md:gap-3'>
                 <button
                     className={`space-x-1 w-max border py-1.5 px-3 rounded-lg flex items-center ${
                         !isEmpty ? 'border-[#288AD6] text-blue-custom' : ''
@@ -90,7 +72,7 @@ function Filter({ filterData, filterDataPopular }:IFilterProps) {
                     <span>Lọc</span>
                 </button>
                 {showResults && (
-                    <div className="absolute top-14 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 w-[720px] max-h z-10 p-5 flex flex-col gap-5 rounded-lg before:content-[''] before:absolute before:w-4 before:h-4  before:bg-gray-100 before:rotate-45 before:-top-2 before:left-3">
+                    <div className="absolute top-14 shadow-lg bg-gradient-to-r from-indigo-50 via-gray-200 to-indigo-100 w-[720px] max-h z-10 p-5 flex flex-col gap-5 rounded-lg before:content-[''] before:absolute before:w-4 before:h-4  before:bg-indigo-50 before:rotate-45 before:-top-2 before:left-3">
                         <div className="flex flex-wrap gap-5">
                             {!isEmpty && (
                                 <div className="flex gap-2.5 items-center">
@@ -99,8 +81,8 @@ function Filter({ filterData, filterDataPopular }:IFilterProps) {
                                 </div>
                             )}
                             <div className="flex gap-5 flex-wrap items-center justify-between">
-                                {filterData.map((filter:IFilterData, i) => (
-                                    <div key={i} className="flex flex-col ">
+                                {filterData.map((filter: IFilterData, i) => (
+                                    <div key={i} className="flex flex-col">
                                         <div className="font-bold">{filter.placeholder}</div>
                                         <div className="mt-2.5">{filter.queryName === 'price' && <PriceRange />}</div>
                                         <div className="flex gap-2.5 py-2.5">
@@ -144,7 +126,7 @@ function Filter({ filterData, filterDataPopular }:IFilterProps) {
                     </div>
                 )}
                 {isEmpty &&
-                    filterDataPopular.map((item:IFilterItemPopular, i:number) => (
+                    filterDataPopular.map((item: IFilterItemPopular, i: number) => (
                         <button
                             className="w-max border border-none py-1.5 px-3 rounded-lg bg-[#f2f4f7] hover:border-[#288AD6]"
                             key={i}
@@ -182,5 +164,4 @@ function Filter({ filterData, filterDataPopular }:IFilterProps) {
         </div>
     );
 }
-
 export default Filter;

@@ -3,6 +3,7 @@ import Auth from '@/components/auth/Auth';
 import { saveName } from '@/components/slice/nameUserSlice';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 
 const AuthPage = () => {
@@ -27,7 +28,8 @@ const AuthPage = () => {
                 body: JSON.stringify(formData),
             });
             const data = await response.json();
-            if (data) {
+            console.log('dataaaaa',data.result)
+            if (data.token !== undefined) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.result));
                 dispatch(saveName(localStorage.getItem('user')));
@@ -36,22 +38,28 @@ const AuthPage = () => {
                 } else {
                     router.push('/');
                 }
+                toast.success('Đăng nhập thành công!');
+            }else{
+                toast.error('Sai thông tin đăng nhập hoặc mật khẩu!');
+                setFormData(initialState)
             }
         } catch (error) {
-            console.log(error);
+            toast.error('Sai thông tin đăng nhập hoặc mật khẩu!');
         }
     };
 
     return (
-        
-            <Auth
-                handleSubmit={auth}
-                handleChange={handleChange}
-                formData={formData}
-                isSignup={isSignup}
-                switchMode={switchMode}
-            />
-      
+        <>
+       
+        <Auth
+            handleSubmit={auth}
+            handleChange={handleChange}
+            formData={formData}
+            isSignup={isSignup}
+            switchMode={switchMode}
+        />
+          <Toaster  position="top-center"/>
+         </>
     );
 };
 
