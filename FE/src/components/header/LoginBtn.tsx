@@ -54,8 +54,8 @@ function LoginBtn() {
                 </Link>
                 <button onClick={handleLogout} className='px-2.5 py-1 rounded-lg bg-orange-400 w-full'>Logout</button>
             </div> } */}
-            {openModal && name !==null && !isAdmin &&<div className='flex absolute z-20 top-[65px] flex-col items-center gap-1.5 bg-slate-100 p-2.5 rounded-lg'>
-                <button onClick={handleLogout} className='px-2.5 py-1 rounded-lg bg-orange-400 w-full'>Logout</button>
+            {openModal && name !==null && !isAdmin &&<div onClick={handleLogout}  className='flex absolute z-20 top-[65px] px-2.5 py-1 rounded-lg bg-slate-100 cursor-pointer before:content-[""] before:absolute before:w-3 before:h-3 before:bg-slate-100 before:rotate-45 before:-top-[5px] before:left-3'>
+                LOG-OUT
             </div> }
             </div>
         </div>

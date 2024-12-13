@@ -37,14 +37,14 @@ export default function BannerSliderProducts({
     data,
     slidesPerView = 6,
     row = 2,
-    extraPromotionStyles
+    extraPromotionStyles=false,
 }: {
     data: IProduct[];
     slidesPerView?: number;
     row?: number;
     extraPromotionStyles?:boolean,
 }) {
-    const swiperRef = useRef<SwiperClass | null>();;
+    const swiperRef = useRef<SwiperClass | null>();
     return (
         <div className='relative px-5'>
             <Swiper

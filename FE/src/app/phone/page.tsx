@@ -19,7 +19,6 @@ const PhonePage = async ({ searchParams }:IPhonePage) => {
         type: [searchParams.type].flat(),
         salePrice: searchParams.salePrice,
         sort:  searchParams.sort,
-        page:searchParams.page,
     });
    
     return (

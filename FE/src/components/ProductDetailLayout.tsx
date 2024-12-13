@@ -1,28 +1,18 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import BannerSliderProducts from '@/components/BannerSliderProducts';
+import ImagesProduct from '@/components/ImagesProduct';
+import StarReview from '@/components/StarReview';
 import {
-    faAngleDown,
     faAngleRight,
     faBoxArchive,
     faCirclePlus,
-    faCircleQuestion,
-    faPhone,
     faRulerCombined,
     faStar,
-    faStore,
-    faThumbsUp,
-    faTruckMoving,
+    faThumbsUp
 } from '@fortawesome/free-solid-svg-icons';
-import Image from 'next/image';
-import ImagesProduct from '@/components/ImagesProduct';
-import BannerSliderProducts from '@/components/BannerSliderProducts';
-import StarReview from '@/components/StarReview';
-import CartButton from '@/components/CartButton';
-import SelectedPlace from '@/components/SelectedPlace';
-import AddressModal from '@/components/AddressModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Info from './info/Info';
-import { IProduct } from './type';
-import { formatSalePrice } from './formatSalePrice';
 import ProductDetailRight from './ProductDetailRight';
+import { IProduct } from './type';
 interface IProductDetailLayoutProps {
     dataProduct: IProduct;
     dataMore: IProduct[];
@@ -110,8 +100,9 @@ function ProductDetailLayout({ dataProduct, dataMore, label }: IProductDetailLay
                         <span className="font-bold leading-[21px]">Sản phẩm thường mua cùng</span>
                         <span className="text-blue-custom">Xem tất cả</span>
                     </p>
-                    <div className="flex gap-2.5">
+                    <div className="-mx-5">
                         <BannerSliderProducts data={dataMore} row={1} slidesPerView={5} />
+
                     </div>
                 </div>
             </div>

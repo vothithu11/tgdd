@@ -104,7 +104,7 @@ const ProductCard: React.FC<IProductCardProps> = ({
                     </div>
                     {!extraPromotionStyles && (
                         <div className="flex justify-between items-center text-xs -mt-[11px] h-[18px]">
-                            <span className='flex gap-1 bg-slate-100'>
+                            <span className='flex gap-1'>
                                 <FontAwesomeIcon icon={faStar} className="w-[14px] h-[14px] -mt-[1px] text-[#FFD400]" />{' '}
                                 <span className="text-[#667085] text-xs leading-[13px] justify-items-center">{rate}</span>
                             </span>

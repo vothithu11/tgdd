@@ -10,8 +10,6 @@ interface ISearchParams {
     keyword?: string;
     demand?:string[];
     screen?:string[];
-    page:number;
-    limit?:number;
 }
 interface FetchProductsProps {
     searchParams?: ISearchParams;

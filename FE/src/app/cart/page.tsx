@@ -3,7 +3,7 @@ import { createOrder } from '@/api';
 import AddressModal from '@/components/AddressModal';
 import { formatSalePrice } from '@/components/formatSalePrice';
 import ProductCounter from '@/components/slice/ProductCounter';
-import { RootState } from '@/components/type';
+import { IOrder, RootState } from '@/components/type';
 import { faChevronDown, faChevronLeft, faPercent } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
@@ -23,7 +23,11 @@ const CartPage = () => {
     const {register,handleSubmit, reset, formState: { errors, isSubmitted } ,}=useForm();
     const onSubmit =(data: FieldValues)=>{
         if ( place?.trim() === ''){return (toast.error('Vui lòng chọn địa chỉ giao hàng'))};
-       const orders =({...data, products: products.map((product) => ({ id:product._id, quantity:product.quantity })),address:place})
+        if (products.length === 0) {
+            toast.error('Giỏ hàng trống');
+            return;
+        }
+           const orders=({...data, products: products.map((product) => ({ id:product._id, quantity:product.quantity })),address:place})
        createOrder(orders);
        toast.success('Tạo đơn hàng thành công!');
        reset();

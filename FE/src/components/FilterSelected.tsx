@@ -1,4 +1,4 @@
-import { formatItemFilter } from '@/components/FormatItemFilter';
+import { convertItemFilter } from '@/components/convertItemFilter';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
@@ -28,7 +28,7 @@ function FilterSelected({ handleValue, handleCancel }: IFilterSelectedProps) {
                                     onClick={() => handleValue(key, item)}
                                     className="w-max h-full border py-1 px-3 rounded-lg border-[#e0e0e0] hover:border-[#288AD6] flex gap-0.5 items-center capitalize"
                                 >
-                                    {formatItemFilter(key, item)}
+                                    {convertItemFilter(key, item)}
                                     <FontAwesomeIcon icon={faXmark} className="w-2.5 h-2.5" />
                                 </button>
                                 

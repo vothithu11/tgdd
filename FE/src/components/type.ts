@@ -39,7 +39,6 @@ export interface ISearchParams {
   salePrice: number[],
   demand:string[],
   screen:string[],
-  page:number,
 }
 export interface IPendingFilter {
     [key:string]: string[]|number[];
@@ -72,7 +71,7 @@ export interface IOrderFull {
     date:string;
     name: string;
     phoneNumber: string;
-    products: { id: string; quantity: number, title:string, salePrice:number }[];
+    products: { id: string; quantity: number, title:string, salePrice:number, image:string }[];
     address: string;
 }
 export interface IFilterItem{
