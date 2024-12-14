@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic';
 import { fetchTablet } from '@/api';
-import { IProduct, ISearchParams } from '@/components/type';
+import { IProduct, ISearchParams } from '@/components/constants/type';
 import ProductsLayout from '@/components/ProductsLayout';
-import {  filterDataTablet, filterDataTabletPopular } from '@/components/data.mocks';
+import {  filterDataTablet, filterDataTabletPopular } from '@/components/constants/data.mocks';
 import Filter from '@/components/Filter';
 interface ITabletPage {
     searchParams: ISearchParams

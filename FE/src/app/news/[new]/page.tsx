@@ -1,4 +1,4 @@
-import { newsfeed } from '@/components/data.mocks';
+import { newsfeed } from '@/components/constants/data.mocks';
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';

@@ -28,7 +28,6 @@ const AuthPage = () => {
                 body: JSON.stringify(formData),
             });
             const data = await response.json();
-            console.log('dataaaaa',data.result)
             if (data.token !== undefined) {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.result));

@@ -1,9 +1,9 @@
 'use client';
 import { createOrder } from '@/api';
 import AddressModal from '@/components/AddressModal';
-import { formatSalePrice } from '@/components/formatSalePrice';
+import { formatSalePrice } from '@/components/constants/formatSalePrice';
 import ProductCounter from '@/components/slice/ProductCounter';
-import { IOrder, RootState } from '@/components/type';
+import { IOrder, RootState } from '@/components/constants/type';
 import { faChevronDown, faChevronLeft, faPercent } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
@@ -49,11 +49,11 @@ const CartPage = () => {
                         <p className="text-[#344054] font-bold text-xl">Giỏ hàng trống</p>
                         <p>Không có sản phẩm nào trong giỏ hàng</p>
                         <Link href="/">
-                            <button className="w-[464px] bg-[#2a83e9ed] h-10 text-[#fff] py-2.5 mx-auto font-bold rounded-lg">
+                            <button className="w-[464px] bg-[#2a83e9ed] text-[#fff] py-2.5 mx-auto font-bold rounded-lg max-sm:w-[320px]">
                                 Về trang chủ
                             </button>
                         </Link>
-                        <p>
+                        <p className='max-sm:text-center'>
                             Khi cần trợ giúp vui lòng gọi <span className="text-blue-custom">1900 232 460</span> hoặc{' '}
                             <span className="text-blue-custom">028.3622.1060</span> (8h00 - 21h30)
                         </p>

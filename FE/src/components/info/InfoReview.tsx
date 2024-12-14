@@ -2,7 +2,7 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
 import React, { useState } from 'react';
-import { IProduct } from '../type';
+import { IProduct } from '../constants/type';
 
 function InfoReview({product}:{product:IProduct}) {
     const [showMore,setShowMore]= useState(false);

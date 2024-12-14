@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import { MotionDiv } from '../MotionDiv';
 import React from 'react';
-import { IProduct } from '../type';
+import { IProduct } from '../constants/type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { formatSalePrice } from '../formatSalePrice';
+import { formatSalePrice } from '../constants/formatSalePrice';
 import { useDispatch } from 'react-redux';
 import { increment } from '../slice/counterSlice';
 

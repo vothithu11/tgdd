@@ -2,7 +2,7 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { IProduct, RootState } from './type';
+import { IProduct, RootState } from './constants/type';
 import ProductCard from './product-card';
 import { useSelector } from 'react-redux';
 

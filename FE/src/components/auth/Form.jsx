@@ -1,6 +1,6 @@
 'use client';
 import { useForm } from 'react-hook-form';
-import { createProduct } from '../data.mocks';
+import { createProduct } from '../constants/data.mocks';
 import FileBase64 from 'react-file-base64';
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';

@@ -1,6 +1,6 @@
 import {fetchPhoneProducts, fetchProductDetail} from '@/api';
 import ProductDetailLayout from '@/components/ProductDetailLayout';
-import { IProduct } from '@/components/type';
+import { IProduct } from '@/components/constants/type';
 
 const TabletDetail = async ({params}: { params: { _id: string } } ) => {
     const _id = params._id;

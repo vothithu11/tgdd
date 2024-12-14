@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveName } from '../slice/nameUserSlice';
 import { useRouter } from 'next/navigation';
-import { RootState } from '../type';
+import { RootState } from '../constants/type';
 
 function LoginBtn() {
     const [openModal,setOpenModal]=useState(false);

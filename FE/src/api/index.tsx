@@ -1,4 +1,4 @@
-import { IOrder} from "@/components/type";
+import { IOrder} from "@/components/constants/type";
 interface ISearchParams {
     category?: string;
     brand?: string[];

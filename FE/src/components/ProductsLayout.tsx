@@ -4,7 +4,7 @@ import ProductCard from '@/components/product-card';
 import { faAngleDown, faAngleRight, faFilter } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { IProduct } from './type';
+import { IProduct } from './constants/type';
 import IconReview from './IconReview';
 import Link from 'next/link';
 import LoadMore from './LoadMore';
@@ -20,7 +20,7 @@ function ProductsLayout({quantity,title,products,children}:IProductsLayoutProps)
   return (
     <main className="bg-[#f2f4f7] pb-3">
     <div className="max-w-[1200px] mx-auto">
-        <div className="flex items-center gap-2 pt-2.5 max-sm:pl-2.5">
+        <div className="flex items-center gap-2 pt-2.5 max-lg:pl-2.5">
             <Link href='/'>
             <span className="text-[#98a2b3]">Trang chủ</span>
             </Link>

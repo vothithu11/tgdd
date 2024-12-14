@@ -9,7 +9,7 @@ import { Grid } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ProductCard from './product-card';
-import { IProduct } from './type';
+import { IProduct } from './constants/type';
 import { useRef } from 'react';
 const SlidePrevBtn = () => {
     

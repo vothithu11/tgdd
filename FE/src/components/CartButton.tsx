@@ -3,7 +3,7 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { IProduct } from './type';
+import { IProduct } from './constants/type';
 import { increment } from './slice/counterSlice';
 import toast, { Toaster } from 'react-hot-toast';
 import Link from 'next/link';

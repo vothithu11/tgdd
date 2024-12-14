@@ -1,7 +1,7 @@
 'use client';
 import { fetchProductDetailClient } from '@/api';
-import { formatSalePrice } from '@/components/formatSalePrice';
-import { IOrderFull} from '@/components/type';
+import { formatSalePrice } from '@/components/constants/formatSalePrice';
+import { IOrderFull} from '@/components/constants/type';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 

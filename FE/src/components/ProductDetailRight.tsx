@@ -5,8 +5,8 @@ import CartButton from './CartButton'
 import AddressModal from './AddressModal'
 import SelectedPlace from './SelectedPlace'
 import Image from 'next/image'
-import { formatSalePrice } from './formatSalePrice'
-import { IProduct } from './type'
+import { formatSalePrice } from './constants/formatSalePrice'
+import { IProduct } from './constants/type'
 
 function ProductDetailRight({dataProduct}:{dataProduct:IProduct}) {
     const { image, salePrice } = dataProduct;

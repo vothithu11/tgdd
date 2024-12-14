@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { decrement, increment } from './counterSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { IProduct } from '../type';
+import { IProduct } from '../constants/type';
 
 const ProductCounter = ({ product }:{product:IProduct}) => {
     const dispatch = useDispatch();

@@ -1,10 +1,12 @@
 'use client';
 import { useState } from 'react';
-import { info } from '@/components/data.mocks';
+import { info } from '@/components/constants/data.mocks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { IProduct } from '../constants/type';
+import { convertItemFilter } from '../constants/convertItemFilter';
 
-function InfoTech() {
+function InfoTech({ product }: { product: IProduct }) {
     const [openTab, setOpenTab] =  useState<number[]>([]);
 
     return (
@@ -30,7 +32,7 @@ function InfoTech() {
                         info.des.map((item, i) => (
                             <p key={i} className="w-full p-2.5 flex gap-4 border-b border-[#f2f4f7]">
                                 <span>{item[0]}</span>
-                                <span>{item[1]}</span>
+                                <span className='capitalize'>{product[item[1]] !== undefined? convertItemFilter(item[1],product[item[1]]): item[1]}</span>
                             </p>
                         ))}
                 </div>

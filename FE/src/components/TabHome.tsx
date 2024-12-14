@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import BannerSliderProducts from './BannerSliderProducts';
-import { tabHome } from './data.mocks';
+import { tabHome } from './constants/data.mocks';
 import Image from 'next/image';
 import Link from 'next/link';
 import Timer from './Timer';

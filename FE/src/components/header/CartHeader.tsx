@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '../type';
+import { RootState } from '../constants/type';
 
 function CartHeader() {
     const qty = useSelector((state:RootState)=>state.counter.value);

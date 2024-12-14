@@ -1,14 +1,14 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Image from 'next/image';
-import { brands } from './footer.mock';
+import { brands } from '../constants/data.mocks';
 
 function Footer() {
     return (
         <footer className="border-[#e9e8e8] border-t pt-[15px]">
             <div className="bg-white mb-3 max-lg:mx-2.5">
-                <div className="max-w-[1200px] mx-auto flex max-lg:flex-col max-lg:gap-2">
-                    <div className="w-[852px] flex justify-start gap-12 ">
+                <div className="max-w-[1200px] mx-auto flex max-md:flex-col max-lg:gap-2">
+                    <div className="w-[71%] flex justify-start gap-12 max-md:w-full">
                         <div className="flex flex-col gap-[10px] items-start justify-start">
                             <b>Tổng đài hỗ trợ</b>
                             <span>
@@ -40,7 +40,7 @@ function Footer() {
                             </span>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-[10px] w-[348px] items-start justify-start">
+                    <div className="flex flex-col gap-[10px] w-[29%] items-start justify-start max-md:w-full">
                         <p>Website cùng tập đoàn</p>
                         <div className="flex gap-2 flex-wrap justify-start ">
                             {brands.map((img, i) => (
@@ -55,7 +55,7 @@ function Footer() {
                                 </div>
                             ))}
                         </div>
-                        <div className="flex justify-between w-full mt-[11px]">
+                        <div className="flex justify-between w-full mt-[11px] max-lg:justify-start max-lg:gap-2">
                             <span className="flex gap-[5px] items-center">
                                 <Image
                                     src="/facebook.png"
@@ -87,7 +87,7 @@ function Footer() {
                                 Zalo TGDĐ
                             </span>
                         </div>
-                        <div className='flex gap-[9px] justify-start'>
+                        <div className='flex gap-[9px] justify-start flex-wrap'>
                             <Image src='/bct.png' alt='image' width={79} height={24} className='object-contain'/>
                             <Image src='/law.png' alt='image' width={25} height={25} className='object-contain'/>
                             <Image src='/dmca.png' alt='image' width={122} height={24} className='object-contain'/>

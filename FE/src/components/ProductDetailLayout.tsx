@@ -12,7 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Info from './info/Info';
 import ProductDetailRight from './ProductDetailRight';
-import { IProduct } from './type';
+import { IProduct } from './constants/type';
 interface IProductDetailLayoutProps {
     dataProduct: IProduct;
     dataMore: IProduct[];

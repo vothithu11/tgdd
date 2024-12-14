@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { newsfeed } from './data.mocks';
+import { newsfeed } from './constants/data.mocks';
 
 function NewsFeed() {
     const [newsfeedSelected,setNewsfeedSelected]=useState(0);
@@ -21,7 +21,7 @@ function NewsFeed() {
             <div className="grid grid-cols-4 gap-[13px] mt-2.5 w-full max-md:grid-cols-2">
                 {newsfeed[newsfeedSelected].slice(0,4).map((news, i) => (
                     <Link href={`/news/${news.id}`} key={i} >
-                       <div className='w-[100%] h-[162px] relative'>
+                        <div className='w-[100%] h-[162px] relative max-lg:h-[110px]'>
                             <Image
                                 src={news.img}
                                 alt="banner-news"

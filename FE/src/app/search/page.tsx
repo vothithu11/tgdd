@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
 import { fetchProducts } from '@/api';
 import ProductCard from '@/components/product-card';
-import { IProduct } from '@/components/type';
+import { IProduct } from '@/components/constants/type';
 export const metadata = {
     title: 'Kết quả tìm kiếm | Thegioididong.com',
     description: 'Kết quả tìm kiếm | Thegioididong.com',

@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import InfoTech from './InfoTech';
 import InfoReview from './InfoReview';
-import { IProduct } from '../type';
+import { IProduct } from '../constants/type';
 
 function Info({ product }: { product: IProduct }) {
     const [tabInfo, setTabInfo] = useState(0);
@@ -21,7 +21,7 @@ function Info({ product }: { product: IProduct }) {
                     </button>
                 ))}
             </div>
-            {tabInfo === 0 && <InfoTech />}
+            {tabInfo === 0 && <InfoTech  product={product}/>}
             {tabInfo === 1 && <InfoReview product={product} />}
         </div>
     );

@@ -1,9 +1,9 @@
 export const dynamic = 'force-dynamic';
 import { fetchLaptop } from '@/api';
-import { IProduct, ISearchParams } from '@/components/type';
+import { IProduct, ISearchParams } from '@/components/constants/type';
 import ProductsLayout from '@/components/ProductsLayout';
 import Filter from '@/components/Filter';
-import { filterDataLaptop, filterDataLaptopPopular } from '@/components/data.mocks';
+import { filterDataLaptop, filterDataLaptopPopular } from '@/components/constants/data.mocks';
 interface ILaptopPage {
     searchParams: ISearchParams;
 }

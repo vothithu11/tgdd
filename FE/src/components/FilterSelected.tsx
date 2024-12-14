@@ -1,9 +1,9 @@
-import { convertItemFilter } from '@/components/convertItemFilter';
+import { convertItemFilter } from '@/components/constants/convertItemFilter';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
-import { IPendingFilter, RootState } from './type';
-import { formatSalePrice } from './formatSalePrice';
+import { IPendingFilter, RootState } from './constants/type';
+import { formatSalePrice } from './constants/formatSalePrice';
 
 interface IFilterSelectedProps {
     handleValue: (key: string, value: string | number) => void;

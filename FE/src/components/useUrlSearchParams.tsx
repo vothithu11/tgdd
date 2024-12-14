@@ -1,6 +1,6 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
-import { IPendingFilter } from './type'; 
+import { IPendingFilter } from './constants/type'; 
 
 const useUrlSearchParams = (fil: IPendingFilter) => {
     const router = useRouter();

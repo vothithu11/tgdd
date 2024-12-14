@@ -2,12 +2,12 @@
 import { faAngleDown, faCheck, faFilter } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
-import { dataSort } from './data.mocks';
+import { dataSort } from './constants/data.mocks';
 import { usePathname, useRouter } from 'next/navigation';
 import { useDispatch, useSelector } from 'react-redux';
 import { clickButton, clickPopup, clickSort, submit, cancel } from '@/components/slice/filterSlice';
 import FilterSelected from './FilterSelected';
-import { IFilterData, IFilterItemPopular, RootState } from './type';
+import { IFilterData, IFilterItemPopular, RootState } from './constants/type';
 import Image from 'next/image';
 import PriceRange from './PriceRange';
 import useUrlSearchParams from './useUrlSearchParams';

@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BannerSlider from '@/components/BannerSlider';
 import TabHome from '../components/TabHome';
-import { popularSearch, promotions } from '@/components/data.mocks';
+import { popularSearch, promotions } from '@/components/constants/data.mocks';
 import NewsFeed from '@/components/NewsFeed';
 import ProductCard from '@/components/product-card';
-import { IProduct } from '@/components/type';
+import { IProduct } from '@/components/constants/type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,17 +14,17 @@ async function Home() {
     const dataPhone = await fetchPhoneProducts();
     return (
         <main className="bg-[#f2f4f7]">
-            <div className="max-w-[1200px] mx-auto pt-2.5 pb-9 max-lg:mx-2.5">
-                <div className='w-full h-[29vh] relative mb-5 max-md:h-[20vh] max-md:-mb-5'>
+            <div className="max-w-[1200px] mx-auto pt-5 pb-9 max-lg:mx-2.5">
+                <div className='mb-5'>
                 <Link href='/phone'>
                 <Image
                     src="/big-banner.png"
                     alt="bigBanner"
-                    fill
-                    quality={100}
-                    className="object-contain rounded-lg cursor-pointer max-md:object-fill"
+                    width={1200}
+                    height={240}
+                    quality={100} 
+                    className="object-cover rounded-lg cursor-pointer max-lg:w-full h-auto"
                 />
-                
                 </Link>
                 </div>
                 {/* section */}
@@ -101,7 +101,7 @@ async function Home() {
                     </Link>
                 </div>
                 {/* section */}
-                <div className="w-full bg-white rounded-2xl p-5 mt-5">
+                <div className="w-full  rounded-2xl p-5 mt-5 bg-white">
                     <h1 className="text-2xl font-bold leading-[18px]">Mọi người cũng tìm kiếm</h1>
                     <div className="mt-3 flex flex-wrap items-center justify-start max-md:h-[120px] max-md:overflow-y-scroll">
                         {popularSearch.map((item, index) => (

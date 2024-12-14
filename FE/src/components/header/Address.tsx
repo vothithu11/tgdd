@@ -3,7 +3,7 @@ import { faAngleRight, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSelector } from 'react-redux';
 import AddressModal from '../AddressModal';
-import { RootState } from '../type';
+import { RootState } from '../constants/type';
 
 function Address({className}:{className?:string}) {
     const {place} = useSelector((state: RootState)=>state.placeName)

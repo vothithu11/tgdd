@@ -1,8 +1,8 @@
 export const dynamic = 'force-dynamic';
 import { fetchPhone } from '@/api';
-import { IProduct, ISearchParams } from '@/components/type';
+import { IProduct, ISearchParams } from '@/components/constants/type';
 import ProductsLayout from '@/components/ProductsLayout';
-import {  filterDataMobile, filterDataMobilePopular } from '@/components/data.mocks';
+import {  filterDataMobile, filterDataMobilePopular } from '@/components/constants/data.mocks';
 import Filter from '@/components/Filter';
 interface IPhonePage {
     searchParams: ISearchParams

@@ -35,7 +35,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import { useState } from "react"
-import { menuBar } from "./data.mocks"
+import { menuBar } from '@/components/constants/data.mocks'
 
 export const MenuBar = () => {
     const [openMenuBar,setOpenMenuBar] = useState(false)

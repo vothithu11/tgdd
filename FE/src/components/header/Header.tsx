@@ -2,7 +2,7 @@ import Image from 'next/image';
 import SearchBar from './SearchBar';
 import { faAngleDown, faBars } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { menuBar } from './data.mocks';
+import { menuBar} from '@/components/constants/data.mocks'
 import Link from 'next/link';
 import CartHeader from './CartHeader';
 import Address from './Address';

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveName } from './slice/nameUserSlice';
-import { RootState } from './type';
+import { RootState } from './constants/type';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faBox, faDatabase, faUser } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';

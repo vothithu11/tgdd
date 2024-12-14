@@ -28,6 +28,7 @@ export interface IProduct {
     type: string,
     demand: string,
     quantity?:number,
+    [key: string]: any;
 }  
 export interface ISearchParams {
   brand: string[] ,
